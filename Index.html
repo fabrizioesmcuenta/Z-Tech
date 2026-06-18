@@ -17,7 +17,6 @@
     body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 15%, rgba(47,99,231,.08), transparent 18%),radial-gradient(circle at 90% 18%, rgba(138,56,232,.10), transparent 22%),var(--bg);color:var(--text);overflow-x:hidden;}    
     a{text-decoration:none;color:inherit} button,input,textarea,select{font:inherit}
     
-    /* Letras del inicio con márgenes limpios */
     .container{max-width:1220px;margin:0 auto;padding:0 32px}
     
     /* Header */
@@ -189,8 +188,6 @@
     .profile-field-item label { font-size:0.78rem; color:#64748b; margin-bottom:4px; font-weight:600; }
     .profile-field-item .val { font-size:0.95rem; font-weight:700; color:#1e293b; word-break:break-all; }
 
-    .btn-disabled { background:#cbd5e1 !important; color:#94a3b8 !important; cursor:not-allowed !important; box-shadow:none !important; transform:none !important; }
-
     .mobile-toggle{display:none}
     .reveal{opacity:0;transform:translateY(35px);transition:opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)}
     .reveal.show{opacity:1;transform:translateY(0)}
@@ -220,6 +217,7 @@
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#servicios">Servicios</a>
         <a href="#para-quien">Para quién</a>
+        <a href="#panel-gestion-tareas">Panel de Gestión de Tareas</a>
         <a href="#seguridad">Seguridad</a>
         <a href="#comparativa">Z-Tech vs. Otros</a>
         <a href="#faq">FAQ</a>
@@ -231,11 +229,9 @@
   <main>
     <section class="hero">
       <div class="container" id="heroDynamicContainer">
-        <!-- Controlado dinámicamente -->
-      </div>
+        </div>
     </section>
 
-    <!-- SECCIÓN PROBLEMA -->
     <section class="section alt reveal" id="problema">
       <div class="container">
         <div class="section-head">
@@ -259,7 +255,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN QUÉ ES Z-TECH -->
     <section class="section soft reveal" id="que-es">
       <div class="container" style="text-align: center;">
         <div class="section-head">
@@ -282,18 +277,22 @@
       </div>
     </section>
 
-    <!-- SECCIÓN SERVICIOS -->
     <section class="section soft reveal" id="servicios">
       <div class="container">
-        <div class="section-head">
-          <h2 class="gradient-text-purple" style="font-weight: 800;">Amplía tus Posibilidades: Descubre Nuestros Servicios</h2>
-          <p>Desde ayuda académica hasta pequeños encargos, Z-Tech tiene lo que necesitas.</p>
+        <div class="grid-3" id="servicesGridContainer" style="grid-template-columns: repeat(3, 1fr); gap: 32px;">
+          
+          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: center; text-align: left; min-height: 300px;">
+            <h2 class="gradient-text-purple" style="font-size: 2.3rem; line-height: 1.1; margin: 0 0 16px; font-weight: 800; letter-spacing: -0.03em;">Descubre Nuestros Servicios</h2>
+            <p style="font-size: 1.05rem; color: #475569; line-height: 1.6; margin: 0;">Desde ayuda académica hasta pequeños encargos, Z-Tech conecta tu campus para simplificar tu vida universitaria.</p>
+          </div>
+
+          <div id="servicesGrid" style="display: contents;">
+            </div>
+
         </div>
-        <div class="grid-3" id="servicesGrid"></div>
       </div>
     </section>
 
-    <!-- SECCIÓN PARA QUIÉN -->
     <section class="section alt reveal" id="para-quien">
       <div class="container">
         <div class="section-head">
@@ -320,6 +319,48 @@
       </div>
     </section>
 
+    <section class="section soft reveal" id="panel-gestion-tareas">
+      <div class="container">
+        <div class="section-head" style="text-align: left; max-width: 100%; margin-bottom: 50px;">
+          <h2 class="gradient-text-blue" style="font-weight: 800; font-size: 2.8rem; margin: 0;">Panel de Gestión de Tareas Campus</h2>
+          <p style="font-size: 1.15rem; color:#475569; margin-top: 10px;">Accede rápidamente a tus solicitudes y encuentra oportunidades cerca de ti.</p>
+        </div>
+
+        <div class="grid-3" style="grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          
+          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+            <div style="background:rgba(37,99,235,0.06); color:#2563eb; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:6px 12px; border-radius:999px; position:absolute; top:30px; right:30px;">TAREAS</div>
+            <div class="service-badge" style="background:#eff6ff; margin-bottom: 24px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 style="margin: 0 0 12px; font-size: 1.5rem; font-weight: 800; color: #1e293b;">Ver Tareas Publicadas</h3>
+            <p style="margin: 0 0 30px; color: #64748b; font-size: 0.98rem; line-height: 1.6; flex-grow: 1;">Explora todas las microtareas disponibles en tu campus y postúlate como Z-Worker.</p>
+            <button class="btn btn-primary" onclick="handleFeedTareas()" style="background:#2563eb; width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px 24px; border-radius: 12px;">Ver Tablero Campus &rarr;</button>
+          </div>
+
+          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+            <div style="background:rgba(147,51,234,0.06); color:#9333ea; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:6px 12px; border-radius:999px; position:absolute; top:30px; right:30px;">PUBLICACIONES</div>
+            <div class="service-badge" style="background:#fdf4ff; margin-bottom: 24px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 style="margin: 0 0 12px; font-size: 1.5rem; font-weight: 800; color: #1e293b;">Mis Publicaciones</h3>
+            <p style="margin: 0 0 30px; color: #64748b; font-size: 0.98rem; line-height: 1.6; flex-grow: 1;">Revisa el estado de tus solicitudes de ayuda, gestiona candidatos y califica.</p>
+            <button class="btn btn-secondary" onclick="handleCTARegistro(event)" style="border-radius: 12px; width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px 24px;">Gestionar mis Solicitudes &rarr;</button>
+          </div>
+
+          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="service-badge" style="background:#f0fdf4; margin-bottom: 24px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 style="margin: 0 0 12px; font-size: 1.5rem; font-weight: 800; color: #1e293b;">Mi Ayuda Z</h3>
+            <p style="margin: 0 0 30px; color: #64748b; font-size: 0.98rem; line-height: 1.6; flex-grow: 1;">Consulta las tareas en las que estás ayudando actualmente o tus ganancias.</p>
+            <button class="btn btn-primary" onclick="openAccountModal('profile')" style="background:linear-gradient(135deg, #0d9488, #10b981); width: 100%; justify-content: center; border-radius: 12px; font-size: 0.9rem; padding: 12px 24px; box-shadow:none;">Ver mi Estado &rarr;</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section class="section soft reveal" id="seguridad">
       <div class="container">
         <div class="section-head">
@@ -330,7 +371,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN COMPARATIVA -->
     <section class="section alt reveal" id="comparativa">
       <div class="container">
         <div class="section-head">
@@ -375,16 +415,15 @@
       </div>
     </section>
 
-    <section class="cta-modern reveal">
+<section class="cta-modern reveal">
       <div class="container">
         <h2>¿Listo para Revolucionar tu Vida Universitaria?</h2>
         <p>Únete a la comunidad Z-Tech y haz que tu campus trabaje para ti.</p>
-        <button class="btn-white-pill" id="joinBtn">
+        <button class="btn-white-pill" id="joinBtn" onclick="openModal('authModalBackdrop'); switchAuthMode('register');">
           ¡Quiero unirme a Z-Tech!
         </button>
       </div>
     </section>
-  </main>
 
   <footer class="footer">
     <div class="container">
@@ -422,7 +461,6 @@
     </div>
   </footer>
 
-  <!-- MODAL INTEGRADO ÚNICO DE AUTENTICACIÓN -->
   <div class="modal-backdrop" id="authModalBackdrop">
     <div class="modal">
       <button class="close" onclick="closeModal('authModalBackdrop')">×</button>
@@ -432,7 +470,6 @@
         <button class="auth-tab active" id="tabRegister" onclick="switchAuthMode('register')">Registrarse</button>
       </div>
 
-      <!-- Formulario de Registro -->
       <div id="registerView">
         <h2 style="margin-top:0;text-align:center;font-size:32px" class="gradient-text-blue">¡Únete a Z-Tech!</h2>
         <p class="muted" style="text-align:center;margin-top:8px;margin-bottom:24px;">Regístrate y conecta con tu comunidad universitaria.</p>
@@ -448,7 +485,6 @@
           <div><label>Contraseña <span>*</span></label><input class="input" name="password" type="password" required></div>
           <div><label>Confirmar Contraseña <span>*</span></label><input class="input" name="confirmPassword" type="password" required></div>
           
-          <!-- CORRECCIÓN: Campo estricto no borrable ni modificable (image_e41c9c.png) -->
           <div>
             <label>Universidad <span>*</span></label>
             <input class="input input-readonly" name="university" value="Universidad César Vallejo (UCV)" readonly>
@@ -475,7 +511,6 @@
         </form>
       </div>
 
-      <!-- Formulario de Inicio de Sesión -->
       <div id="loginView" style="display:none;">
         <h2 style="margin-top:0;text-align:center;font-size:32px" class="gradient-text-blue">¡Bienvenido de vuelta!</h2>
         <p class="muted" style="text-align:center;margin-top:8px;margin-bottom:24px;">Ingresa tus credenciales para acceder a tu cuenta de campus.</p>
@@ -491,7 +526,6 @@
     </div>
   </div>
 
-  <!-- MODAL: CREAR NUEVA TAREA -->
   <div class="modal-backdrop" id="createTaskModalBackdrop">
     <div class="modal" style="width:min(600px, 100%);">
       <button class="close" onclick="closeModal('createTaskModalBackdrop')">×</button>
@@ -540,7 +574,6 @@
     </div>
   </div>
 
-  <!-- MODAL: OFRECE TUS SERVICIOS Z-WORKER -->
   <div class="modal-backdrop" id="ofrecerServiciosModalBackdrop">
     <div class="modal" style="width:min(600px, 100%);">
       <button class="close" onclick="closeModal('ofrecerServiciosModalBackdrop')">×</button>
@@ -575,7 +608,6 @@
     </div>
   </div>
 
-  <!-- MODAL: PERFIL / DETALLES DE CUENTA -->
   <div class="modal-backdrop" id="accountModalBackdrop">
     <div class="modal" style="width:min(850px, 100%);">
       <button class="close" onclick="closeModal('accountModalBackdrop')">×</button>
@@ -583,7 +615,7 @@
       <div class="profile-modal-grid">
         <div class="profile-left-panel">
           <div class="user-avatar-big" id="profBigAvatar">ZT</div>
-          <h3 id="profBigName" style="margin:0 0 4px; font-size:1.4rem; font-weight:800; color:#1e293b;">Fabrizio S</h3>
+          <h3 id="profBigName" style="margin:0 0 4px; font-size:1.4rem; font-weight:800; color:#1e293b;"></h3>
           <div class="role-badge-row" style="margin-top:8px;">
             <span class="role-badge-pill primary">Solicitante Principal</span>
             <span class="role-badge-pill secondary" id="profSecBadge">Z-Worker Secundario</span>
@@ -619,7 +651,6 @@
     </div>
   </div>
 
-  <!-- MODAL: ROLES -->
   <div class="modal-backdrop" id="rolesModalBackdrop">
     <div class="modal" style="width:min(480px, 100%);">
       <button class="close" onclick="closeModal('rolesModalBackdrop')">×</button>
@@ -1014,18 +1045,11 @@
             return;
           }
         } else {
-          userDatabase[email] = {
-            fullName: 'Fabrizio Seminario',
-            email: email,
-            password: pass,
-            phone: '970810863',
-            campus: 'Piura',
-            career: 'Ing. de Sistemas',
-            semester: 'VII',
-            skills: 'Calculo',
-            mode: 'solicitante'
-          };
-          currentUser = userDatabase[email];
+          // CORRECCIÓN: Si no existe, mostrar error (imágenes de referencia)
+          alert('Error: No se encontró una cuenta con este correo institucional. Regístrate primero.');
+          switchAuthMode('register');
+          qs('#registerForm input[name="email"]').value = email;
+          return;
         }
 
         closeModal('authModalBackdrop');
