@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z-Tech | Conecta tu Campus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#edf1fb;--surface:#ffffff;--surface-2:#f7f8fd;--text:#192338;--muted:#475569;--line:#dbe3f1;
+      --blue:#2f63e7;--purple:#8a38e8;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;
+      --shadow:0 14px 34px rgba(58,74,107,.10);--shadow-lg:0 24px 70px rgba(50,68,102,.16);--radius:26px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} 
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 15%, rgba(47,99,231,.08), transparent 18%),radial-gradient(circle at 90% 18%, rgba(138,56,232,.10), transparent 22%),var(--bg);color:var(--text);overflow-x:hidden;}    
+    a{text-decoration:none;color:inherit} button,input,textarea,select{font:inherit}
+    
+    /* Letras del inicio con márgenes limpios */
+    .container{max-width:1220px;margin:0 auto;padding:0 32px}
+    
+    /* Header */
+    .header{position:sticky;top:0;z-index:30;background:rgba(237,241,251,.84);backdrop-filter:blur(14px)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0}
+    .nav{display:flex;gap:32px;color:#38465d;font-weight:700;align-items:center}.nav a{line-height:1.35}.nav a:hover{color:var(--blue)}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:900;color:#20293a}
+    .logo img{height:40px;object-fit:contain}
+    
+    /* Botones y Acciones Uniformes */
+    .actions{display:flex;gap:14px;align-items:center}
+    .btn{border:0;border-radius:999px;padding:16px 28px;font-weight:800;cursor:pointer;transition:.24s transform,.24s box-shadow,.24s background,.24s color;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 16px 30px rgba(88,90,231,.28);background-size:160% 160%;animation:gradientShift 8s ease infinite}
+    .btn-secondary{background:#fff;border:1.5px solid #d6dfef;color:#3156b7;box-shadow:0 8px 24px rgba(87,105,141,.08)} .btn-dark{background:#0f172a;color:#fff}
+    
+    /* Hero */
+    .hero{padding:64px 0 72px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center}
+    .hero-container-logged { display: flex; align-items: center; justify-content: space-between; gap: 54px; margin-top: 20px;}
+    h1{font-size:clamp(3.2rem,7vw,5.7rem);line-height:.93;margin:0;font-weight:900;letter-spacing:-.05em;max-width:700px;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:1.18rem;color:#49576d;max-width:620px;margin-top:22px;line-height:1.6}
+    .hero-card{background:transparent;border:0;border-radius:0;padding:0;box-shadow:none;display:flex;justify-content:center;opacity:0;transform:translateY(30px) scale(.98);animation:floatIn .9s cubic-bezier(.2,.8,.2,1) .22s forwards}
+    
+    .phone{width:min(100%,400px);aspect-ratio: 0.58;border-radius:42px;background:#0f172a;padding:10px;box-shadow:0 32px 60px rgba(38,50,80,.18);position:relative}
+    .phone::before{content:'';position:absolute;top:16px;left:50%;transform:translateX(-50%);width:82px;height:8px;border-radius:999px;background:#3a4357;z-index:2}
+    .phone-screen{height:100%;border-radius:34px;background:linear-gradient(180deg,#eff3fd,#eaf0fb);padding:72px 18px 22px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.9)}
+    .phone-title{text-align:center;font-size:1.15rem;font-weight:900;color:#5141bf;margin-bottom:26px}
+    .task-list{display:grid;gap:14px}.task-card{background:#fff;border-radius:16px;padding:16px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 20px rgba(66,81,109,.1);border:1px solid #edf1f7}
+    .task-dot{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px;flex:none}.task-dot.blue{background:#4f83f1}.task-dot.purple{background:#a855f7}.task-dot.green{background:#22c55e}
+    .task-text{font-size:1rem;font-weight:700;line-height:1.45;color:#283449}
+    .phone-fab{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:48px;height:48px;border-radius:999px;background:linear-gradient(135deg,#5e75ff,#b03de6);color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 14px 28px rgba(88,90,231,.3)}
+    
+    /* Secciones Comunes */
+    .section{padding:84px 0}.section.alt{background:#fff}.section.soft{background:#eef2ff}.section.grad{background:linear-gradient(135deg,#eef2ff,#f5f3ff)}
+    .section-head{text-align:center;max-width:860px;margin:0 auto 48px}
+    .section-head h2{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin:0 0 18px;font-weight:900}
+    .section-head p{font-size:1.12rem;color:#475569;line-height:1.75}
+    .grid-3,.grid-2{display:grid;gap:32px}.grid-3{grid-template-columns:repeat(3,1fr)} .grid-2{grid-template-columns:repeat(2,1fr)}
+    
+    /* Tarjetas base */
+    .card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:36px 28px;box-shadow:0 10px 25px rgba(0, 0, 0, 0.03);transition:transform .25s ease, box-shadow .25s ease}
+    .card h3{margin:0 0 12px;font-size:1.35rem;font-weight:800;color:#1e293b}.card p{margin:0;color:#64748b;font-size:0.95rem;line-height:1.6}.card:hover,.faq-item:hover{transform:translateY(-6px);box-shadow:0 20px 38px rgba(15,23,42,0.08)}
+    .tone-red{background:#fff1f2; border: 1px solid #ffe4e6;}.tone-green{background:#f0fdf4; border: 1px solid #dcfce7;}.tone-yellow{background:#fefce8; border: 1px solid #fef9c3;}
+    
+    /* Pasos */
+    .steps .step-num {
+      width: 38px;height: 38px;border-radius: 50%;background: #ffffff;border: 1.5px solid #3b82f6;
+      display: grid;place-items: center;font-weight: 700;color: #1e293b;font-size: 1.05rem;margin: 0 auto 20px;
+    }
+    .steps .step-icon {display: flex;justify-content: center;align-items: center;margin-bottom: 22px;height: 32px;}
+    .steps h3 {color: #6b21a8; font-size: 1.25rem; font-weight: 700; text-align:center;}
+    .steps p {text-align:center;}
+
+    /* Degradados de texto */
+    .gradient-text-blue {
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .gradient-text-purple {
+      background: linear-gradient(135deg, #7c3aed, #db2777); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .gradient-text-green {
+      background: linear-gradient(135deg, #0d9488, #10b981); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .gradient-text-blue-red {
+      background: linear-gradient(135deg, #2563eb, #dc2626); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    
+    .service-badge {
+      width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 24px;
+    }
+    
+    /* Bloques de Ayuda y Oportunidades */
+    .two-panel .card {
+      display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 48px; border: none;
+    }
+    .two-panel h3 { font-size: 1.75rem; font-weight: 800; margin: 20px 0 16px; }
+    .two-panel p { font-size: 1.05rem; line-height: 1.65; margin-bottom: 32px; }
+
+    /* Comparativa de Grupos */
+    .comparison-title { color: #1e3a8a; font-weight: 900; }
+    .comparison-title span { font-weight:900; }
+    .comparison .card ul { padding: 0; margin: 24px 0 0; list-style: none; display: grid; gap: 16px; }
+    .comparison .card li { display: flex; gap: 12px; align-items: center; font-size: 1rem; font-weight: 500; color: #334155; }
+    
+    /* FAQ Animado */
+    .faq { display: grid; gap: 0; max-width: 800px; margin: 0 auto; }
+    .faq-item { background: transparent; border: none; border-bottom: 1px solid #e2e8f0; border-radius: 0; box-shadow: none; transition: none; }
+    .faq-item:hover { transform: none; box-shadow: none; }
+    .faq-q { padding: 24px 0; font-size: 1.05rem; color: #1e293b; font-weight: 600; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .faq-q span { color: #3b82f6; font-size: 1.5rem; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .faq-wrapper { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s linear; }
+    .faq-a { padding: 0 0 24px 0; color: #64748b; font-size: 0.98rem; line-height: 1.7; }
+    .faq-item.open .faq-wrapper { max-height: 200px; opacity: 1; }
+    .faq-item.open .faq-q span { transform: rotate(45deg); }
+
+    /* Bloque CTA */
+    .cta-modern {
+      padding: 100px 0; background: linear-gradient(135deg, #1e40af, #6b21a8); color: #fff; text-align: center;
+    }
+    .cta-modern h2 { font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 900; margin: 0 0 20px; letter-spacing: -0.03em; }
+    .cta-modern p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto 40px; }
+    .btn-white-pill {
+      background: #ffffff; color: #2563eb; font-weight: 800; font-size: 1.1rem; padding: 16px 36px; border-radius: 999px; border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: 0.25s ease; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-white-pill:hover { transform: scale(1.04); box-shadow: 0 14px 30px rgba(0,0,0,0.2); }
+
+    .footer { background: #1e293b; color: #94a3b8; padding: 80px 0 40px; font-size: 0.92rem; }
+    .footer h4 { color: #ffffff; font-size: 1rem; font-weight: 700; margin: 0 0 20px; }
+    .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .footer a:hover { color: #ffffff; }
+
+    /* Modales Avanzados */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.72);display:none;align-items:center;justify-content:center;padding:16px;z-index:100;opacity:0;transition:opacity 0.3s ease-in-out;}
+    .modal-backdrop.show{display:flex;opacity:1;}
+    .modal{width:min(800px,100%);max-height:90vh;overflow-y:auto;background:#fff;border-radius:24px;padding:40px;box-shadow:var(--shadow-lg);position:relative;transform:translateY(30px);transition:transform 0.3s ease-in-out;}
+    .modal-backdrop.show .modal{transform:translateY(0);}
+    
+    /* Separación y centrado de la X */
+    .close{position:absolute;top:32px;right:32px;border:0;background:#f1f5f9;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:grid;place-items:center;color:#64748b;transition:background 0.2s;z-index:10;}
+    .close:hover{background:#e2e8f0;}
+    
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+    .form-full{grid-column:1/-1}
+    label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;color:#334155}
+    label span { color: var(--red); }
+    .input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px 16px;outline:none;background:#fff;color:#1e293b;}
+    .input:focus,select:focus,textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 4px rgba(96,165,250,.18)}
+    
+    /* Bloqueo estricto para universidad */
+    .input-readonly { background: #f1f5f9; color: #64748b; cursor: not-allowed; border-color: #cbd5e1; font-weight: 500; }
+
+    /* Pestañas de Login/Registro */
+    .auth-tabs { display:flex; background:#f1f5f9; padding:6px; border-radius:14px; margin-bottom:28px; gap:4px; }
+    .auth-tab { flex:1; padding:12px; border:0; background:transparent; border-radius:10px; font-weight:700; color:#64748b; cursor:pointer; transition:0.2s; text-align:center; }
+    .auth-tab.active { background:#ffffff; color:#7c3aed; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+
+    /* Tarjeta del Dashboard */
+    .user-welcome-card { background:#ffffff; border-radius:24px; padding:40px; box-shadow:var(--shadow); border:1px solid #e2e8f0; width:100%; max-width:420px; text-align:center; margin:0 auto; }
+    .user-welcome-card h2 { font-size:1.8rem; font-weight:800; color:#4338ca; margin:0 0 24px; }
+    .user-avatar-big { width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg, #4f46e5, #a855f7); color:#fff; display:grid; place-items:center; font-size:2.5rem; font-weight:800; margin:0 auto 20px; box-shadow:0 10px 25px rgba(79,70,229,0.3); }
+    .role-badge-row { display:flex; justify-content:center; gap:8px; margin-bottom:14px; }
+    .role-badge-pill { padding:6px 14px; border-radius:999px; font-size:0.78rem; font-weight:700; }
+    .role-badge-pill.primary { background:#dbeafe; color:#2563eb; }
+    .role-badge-pill.secondary { background:#f3e8ff; color:#9333ea; }
+    .current-mode-status { background:#2563eb; color:#ffffff; padding:8px 18px; border-radius:999px; font-weight:700; font-size:0.88rem; display:inline-block; margin-bottom:24px; }
+    .user-info-list { text-align:left; display:grid; gap:12px; border-top:1px solid #f1f5f9; padding-top:20px; margin-bottom:28px; }
+    .user-info-row { display:flex; align-items:center; gap:12px; font-size:0.88rem; color:#475569; }
+    .user-info-row svg { flex-shrink:0; color:#94a3b8; }
+
+    /* Dropdown Header */
+    .user-chip{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #d6dfef;padding:6px 16px;border-radius:999px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.03);font-weight:700;color:#1e293b;transition:0.2s; position:relative; }
+    .user-chip:hover { background:#f8fafc; }
+    .user-chip .avatar-sm{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg, #3b82f6, #8b5cf6);color:#fff;display:grid;place-items:center;font-weight:800;font-size:0.88rem;}
+    .user-dropdown { position:absolute; top:calc(100% + 8px); right:0; width:220px; background:#fff; border:1px solid #e2e8f0; border-radius:16px; box-shadow:var(--shadow-lg); padding:10px; display:none; z-index:100; flex-direction:column; gap:2px; }
+    .user-dropdown.show { display:flex; }
+    .user-dropdown button { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:transparent; border:0; padding:12px 14px; border-radius:10px; cursor:pointer; font-weight:600; color:#475569; transition:0.2s; }
+    .user-dropdown button:hover { background:#eff6ff; color:#2563eb; }
+    .user-dropdown button svg { color:#94a3b8; }
+    .user-dropdown button.logout-btn { color:#dc2626; }
+    .user-dropdown button.logout-btn:hover { background:#fef2f2; color:#b91c1c; }
+    .user-dropdown button.logout-btn svg { color:#f87171; }
+
+    /* Modal Perfil */
+    .profile-modal-grid { display:grid; grid-template-columns: 240px 1fr; gap:32px; }
+    .profile-left-panel { text-align:center; border-right:1px solid #e2e8f0; padding-right:32px; display:flex; flex-direction:column; align-items:center; }
+    .profile-fields-display { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
+    .profile-field-item { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px 16px; }
+    .profile-field-item label { font-size:0.78rem; color:#64748b; margin-bottom:4px; font-weight:600; }
+    .profile-field-item .val { font-size:0.95rem; font-weight:700; color:#1e293b; word-break:break-all; }
+
+    .btn-disabled { background:#cbd5e1 !important; color:#94a3b8 !important; cursor:not-allowed !important; box-shadow:none !important; transform:none !important; }
+
+    .mobile-toggle{display:none}
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .hero-copy > *{opacity:0;transform:translateY(24px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
+    .hero-copy > *:nth-child(1){animation-delay:.05s}.hero-copy > *:nth-child(2){animation-delay:.14s}.hero-copy > *:nth-child(3){animation-delay:.24s}.hero-copy > *:nth-child(4){animation-delay:.34s}
+    
+    @keyframes rise{to{opacity:1;transform:translateY(0)}}
+    @keyframes floatIn{to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    
+    @media (max-width: 980px) {
+      .hero{padding:24px 0 54px}.hero-grid,.grid-3,.grid-2,.two-panel,.comparison,.footer-grid,.form-grid,.profile-modal-grid{grid-template-columns:1fr}
+      .profile-left-panel { border-right:0; padding-right:0; border-bottom:1px solid #e2e8f0; padding-bottom:24px; }
+      .nav,.desktop-only{display:none}.mobile-toggle{display:inline-flex}
+      .container{padding:0 18px}h1{font-size:clamp(2.7rem,14vw,4.2rem)}
+      .hero-container-logged { flex-direction:column-reverse; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="logo"><img src="Z-TECH.png" alt="Z-Tech Logo" /></a>
+      <nav class="nav">
+        <a href="#problema">Problema</a>
+        <a href="#que-es">Qué es Z-Tech</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#para-quien">Para quién</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#comparativa">Z-Tech vs. Otros</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="actions" id="headerActions"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container" id="heroDynamicContainer">
+        <!-- Controlado dinámicamente -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN PROBLEMA -->
+    <section class="section alt reveal" id="problema">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="gradient-text-blue" style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800;">¿Te suena familiar? El día a día universitario es un caos.</h2>
+          <p style="font-size: 1.15rem; color:#475569;">Entre clases, proyectos y vida social, el tiempo es oro y a veces ¡simplemente no alcanza!</p>
+        </div>
+        <div class="grid-3">
+          <div class="card tone-red">
+            <h3 class="gradient-text-purple" style="font-weight: 800;">Falta de Tiempo</h3>
+            <p>Necesitas ayuda rápida con un encargo o una tarea ¡pero no hay horas en el día!</p>
+          </div>
+          <div class="card tone-green">
+            <h3 class="gradient-text-green" style="font-weight: 800;">Ingresos Extra</h3>
+            <p>Buscas una forma flexible y segura de ganar dinero mientras estudias.</p>
+          </div>
+          <div class="card tone-yellow">
+            <h3 style="background: linear-gradient(135deg, #b45309, #d97706); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">Ayuda Confiable</h3>
+            <p>Es difícil encontrar apoyo rápido y de confianza entre tanto contacto efímero.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN QUÉ ES Z-TECH -->
+    <section class="section soft reveal" id="que-es">
+      <div class="container" style="text-align: center;">
+        <div class="section-head">
+          <h2 class="gradient-text-purple" style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 20px;">Z-Tech: La Plataforma que Conecta Tu Campus</h2>
+          <p style="font-size: 1.2rem; max-width: 850px; margin: 0 auto 36px; line-height: 1.7; color: #1e293b;">
+            Imagina un lugar donde todos los estudiantes de tu universidad se apoyan mutuamente. <strong style="color: #2563eb;">Z-Tech es esa comunidad.</strong> Un puente digital para que recibas ayuda o generes ingresos, ¡todo dentro del ambiente universitario que ya conoces y confías!
+          </p>
+          <a class="btn-cta btn-cta-purple" href="#como-funciona" style="padding: 16px 36px; font-size: 1.05rem; display: inline-flex;">Descubre los Microservicios &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt reveal" id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <h2 style="color: #10b981; font-weight: 800;">La Magia de Z-Tech en 6 Pasos Sencillos</h2>
+          <p>Conectar nunca fue tan fácil. Sigue estos pasos y empieza a ser parte de la comunidad.</p>
+        </div>
+        <div class="grid-2 steps" id="stepsGrid"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN SERVICIOS -->
+    <section class="section soft reveal" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="gradient-text-purple" style="font-weight: 800;">Amplía tus Posibilidades: Descubre Nuestros Servicios</h2>
+          <p>Desde ayuda académica hasta pequeños encargos, Z-Tech tiene lo que necesitas.</p>
+        </div>
+        <div class="grid-3" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PARA QUIÉN -->
+    <section class="section alt reveal" id="para-quien">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="gradient-text-green" style="font-weight: 800; font-size: 2.8rem;">Ayuda y Oportunidades para Todos</h2>
+        </div>
+        <div class="two-panel">
+          <div class="card" style="background:#eff6ff;">
+            <div class="service-badge" style="background:#dbeafe;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Para quien necesita ayuda</h3>
+            <p style="color:#475569;">¿Atascado con un trabajo, necesitas un recado o simplemente no tienes tiempo? Publica tu necesidad en Z-Tech y deja que la comunidad de tu campus te eche una mano. Rápido, seguro y confiable.</p>
+            <button class="btn btn-primary" onclick="openModal('createTaskModalBackdrop')" style="background:#2563eb; padding: 14px 28px;">Publicar una Tarea &rarr;</button>
+          </div>
+          <div class="card" style="background:#fdf4ff;">
+            <div class="service-badge" style="background:#fae8ff;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3>Para quien quiere generar ingresos</h3>
+            <p style="color:#475569;">¿Tienes tiempo libre y quieres ganar dinero extra? Ofrece tus habilidades, ayuda a tus compañeros y cobra por tus servicios. Con Z-Tech, el campus se convierte en tu fuente de ingresos flexible y segura.</p>
+            <button class="btn btn-primary" onclick="openAccountModal('config')" style="background:#9333ea; padding: 14px 28px;">Ofrecer mis Servicios &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft reveal" id="seguridad">
+      <div class="container">
+        <div class="section-head">
+          <h2 style="color:#0369a1; font-weight: 800;">Tu Tranquilidad es Nuestra Prioridad</h2>
+          <p>En Z-Tech, construimos confianza con cada interacción.</p>
+        </div>
+        <div class="grid-3" id="benefitsGrid"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN COMPARATIVA -->
+    <section class="section alt reveal" id="comparativa">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="comparison-title" style="font-size: 2.5rem;">¿Grupos de WhatsApp o Z-Tech? <span class="gradient-text-blue-red">La Elección es Clara.</span></h2>
+          <p>Adiós al caos, hola a la eficiencia, la seguridad y la confianza verificada.</p>
+        </div>
+        <div class="comparison">
+          <div class="card" style="background:#f8fafc; border:1px solid #3b82f6; box-shadow: 0 10px 30px rgba(59,130,246,0.05);">
+            <h3 style="color:#2563eb; font-size:2rem; margin-bottom:6px; font-weight:800;">Z-Tech</h3>
+            <p style="color:#64748b; font-weight:500;">Tu plataforma inteligente y segura.</p>
+            <ul>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Solo estudiantes UCV verificados.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Pagos digitales seguros y transparentes.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sistema de reputación y calificaciones.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Geolocalización para encontrar ayuda cerca.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Interfaz limpia y organizada.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Soporte al usuario dedicado.</li>
+            </ul>
+          </div>
+          <div class="card" style="background:#ffffff; border:1px solid #e2e8f0;">
+            <h3 style="color:#1e293b; font-size:2rem; margin-bottom:6px; font-weight:800;">Grupos Informales</h3>
+            <p style="color:#94a3b8; font-weight:500;">El caos de siempre.</p>
+            <ul>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Poca o nula verificación de identidad.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Riesgo en pagos (efectivo, transferencias no trazables).</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Ausencia de reputación o historial claro.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Dificultad para encontrar quién está cerca.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Chats saturados y difícil seguimiento.</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sin soporte o ayuda oficial.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft reveal" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2 style="color:#4f46e5; font-weight:800;">Preguntas Frecuentes</h2>
+        </div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="cta-modern reveal">
+      <div class="container">
+        <h2>¿Listo para Revolucionar tu Vida Universitaria?</h2>
+        <p>Únete a la comunidad Z-Tech y haz que tu campus trabaje para ti.</p>
+        <button class="btn-white-pill" id="joinBtn">
+          ¡Quiero unirme a Z-Tech!
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px;" class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom:20px;"><img src="Z-TECH.png" alt="Z-Tech" /></div>
+          <p style="line-height:1.6; max-width:260px;">Conectando estudiantes, potenciando el campus.</p>
+        </div>
+        <div>
+          <h4>Explora</h4>
+          <ul>
+            <li><a href="#problema">Problema</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#seguridad">Seguridad</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Aviso Legal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <p style="color:#fff; font-weight:600; margin:0 0 16px;">info@ztech.com</p>
+          <p style="color:#64748b; font-weight:700; letter-spacing:2px;">FB &middot; IG &middot; TW</p>
+        </div>
+      </div>
+      <div style="text-align:center; padding-top:40px; border-top:1px solid #334155; color:#64748b;">
+        &copy; <span id="year"></span> Z-Tech. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL INTEGRADO ÚNICO DE AUTENTICACIÓN -->
+  <div class="modal-backdrop" id="authModalBackdrop">
+    <div class="modal">
+      <button class="close" onclick="closeModal('authModalBackdrop')">×</button>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab" id="tabLogin" onclick="switchAuthMode('login')">Iniciar Sesión</button>
+        <button class="auth-tab active" id="tabRegister" onclick="switchAuthMode('register')">Registrarse</button>
+      </div>
+
+      <!-- Formulario de Registro -->
+      <div id="registerView">
+        <h2 style="margin-top:0;text-align:center;font-size:32px" class="gradient-text-blue">¡Únete a Z-Tech!</h2>
+        <p class="muted" style="text-align:center;margin-top:8px;margin-bottom:24px;">Regístrate y conecta con tu comunidad universitaria.</p>
+        
+        <div style="display:flex; justify-content:center; gap:12px; margin-bottom:24px;">
+          <button class="btn btn-primary" id="regSolicitanteBtn" onclick="setRegRole('solicitante')">Soy Solicitante</button>
+          <button class="btn btn-secondary" id="regWorkerBtn" onclick="setRegRole('z-worker')">Soy Z-Worker</button>
+        </div>
+
+        <form class="form-grid" id="registerForm">
+          <div><label>Nombre Completo <span>*</span></label><input class="input" name="fullName" required placeholder="Ej. Nombre"></div>
+            <div><label>Correo Institucional <span>*</span></label><input class="input" name="email" type="email" required placeholder="ej. mi.correo@ucvvirtual.edu.pe"></div>
+          <div><label>Contraseña <span>*</span></label><input class="input" name="password" type="password" required></div>
+          <div><label>Confirmar Contraseña <span>*</span></label><input class="input" name="confirmPassword" type="password" required></div>
+          
+          <!-- CORRECCIÓN: Campo estricto no borrable ni modificable (image_e41c9c.png) -->
+          <div>
+            <label>Universidad <span>*</span></label>
+            <input class="input input-readonly" name="university" value="Universidad César Vallejo (UCV)" readonly>
+          </div>
+          
+          <div><label>Campus o Sede <span>*</span></label><input class="input" name="campus"></div>
+          <div><label>Carrera <span>*</span></label><input class="input" name="career"></div>
+          <div><label>Ciclo o Semestre <span>*</span></label><input class="input" name="semester"></div>
+          <div class="form-full"><label>Celular <span>*</span></label><input class="input" name="phone"></div>
+          
+          <div class="form-full" id="regSkillsWrapper" style="display:none">
+            <label>Habilidades o Servicios que puedes ofrecer <span>*</span></label>
+            <textarea class="input" name="skills" rows="3" placeholder="Ej. Clases de Cálculo, Edición de videos, Recados urgentes..."></textarea>
+          </div>
+
+          <div class="form-full">
+            <label style="display:flex; align-items:center; gap:8px; font-weight:500;">
+              <input type="checkbox" required style="width:16px; height:16px;"> Acepto los <a href="#" style="color:var(--blue); text-decoration:underline;">términos y condiciones</a> *
+            </label>
+          </div>
+          <div class="form-full" style="text-align:center; margin-top:14px;">
+            <button class="btn btn-primary" type="submit" style="padding:14px 40px; background:#4f46e5;">Completar Registro</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Formulario de Inicio de Sesión -->
+      <div id="loginView" style="display:none;">
+        <h2 style="margin-top:0;text-align:center;font-size:32px" class="gradient-text-blue">¡Bienvenido de vuelta!</h2>
+        <p class="muted" style="text-align:center;margin-top:8px;margin-bottom:24px;">Ingresa tus credenciales para acceder a tu cuenta de campus.</p>
+        <form class="form-grid" id="loginForm" style="max-width:500px; margin:0 auto;">
+          <div class="form-full"><label>Correo Institucional</label><input class="input" id="loginEmail" type="email" required placeholder="ej. mi.correo@ucvvirtual.edu.pe"></div>
+          <div class="form-full"><label>Contraseña</label><input class="input" id="loginPassword" type="password" required></div>
+          <div class="form-full" style="text-align:center; margin-top:14px;">
+            <button class="btn btn-primary" type="submit" style="padding:14px 40px; background:#4f46e5; width:100%;">Ingresar</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: CREAR NUEVA TAREA -->
+  <div class="modal-backdrop" id="createTaskModalBackdrop">
+    <div class="modal" style="width:min(600px, 100%);">
+      <button class="close" onclick="closeModal('createTaskModalBackdrop')">×</button>
+      <h2 style="margin-top:0; text-align:center; font-size:1.8rem; font-weight:800; color:#4f46e5;">Publica una Nueva Tarea</h2>
+      <p class="muted" style="text-align:center; margin-bottom:24px;">¿Necesitas ayuda? Describe tu necesidad y encuentra a tu Z-Worker ideal.</p>
+      
+      <form class="form-grid" id="createTaskForm">
+        <div>
+          <label>Título de la Tarea <span>*</span></label>
+          <input class="input" name="taskTitle" required placeholder="Ej. Terminar informe de física">
+        </div>
+        <div>
+          <label>Categoría <span>*</span></label>
+          <select class="input" name="taskCategory" required>
+            <option value="">Selecciona una categoría</option>
+            <option>Apoyo Académico</option>
+            <option>Encargos Logísticos</option>
+            <option>Gestiones Personales</option>
+            <option>Tareas Rápidas</option>
+          </select>
+        </div>
+        <div class="form-full">
+          <label>Descripción de la Tarea <span>*</span></label>
+          <textarea class="input" name="taskDesc" rows="4" maxlength="300" required placeholder="Describe en detalle lo que necesitas (ej. ayudarme con proyecto de estadística, recoger material de la biblioteca...). Max 300 caracteres."></textarea>
+        </div>
+        <div>
+          <label>Urgencia</label>
+          <select class="input" name="taskUrgency">
+            <option>Normal</option>
+            <option>Media</option>
+            <option>Alta</option>
+          </select>
+        </div>
+        <div>
+          <label>Ubicación (Campus/Zona) <span>*</span></label>
+          <input class="input" name="taskLocation" required placeholder="Ej. Campus LIMA NORTE, Biblioteca">
+        </div>
+        <div class="form-full">
+          <label>Pago Estimado (S/.) <span>*</span></label>
+          <input class="input" name="taskPayment" type="number" step="0.01" required placeholder="Monto ideal por la tarea (ej. 15.00)">
+        </div>
+        <div class="form-full" style="text-align:center; margin-top:16px;">
+          <button class="btn btn-primary" type="submit" style="padding:14px 40px; background:linear-gradient(135deg, #2563eb, #7c3aed);">Publicar Tarea</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: OFRECE TUS SERVICIOS Z-WORKER -->
+  <div class="modal-backdrop" id="ofrecerServiciosModalBackdrop">
+    <div class="modal" style="width:min(600px, 100%);">
+      <button class="close" onclick="closeModal('ofrecerServiciosModalBackdrop')">×</button>
+      <h2 style="margin-top:0; text-align:center; font-size:1.8rem; font-weight:800; color:#7c3aed;">Ofrece tus Servicios Z-Worker</h2>
+      <p class="muted" style="text-align:center; margin-bottom:24px;">Configura tu perfil para empezar a ganar dinero y ayudar a tus compañeros.</p>
+      
+      <form class="form-grid" id="ofrecerServiciosForm">
+        <div class="form-full">
+          <label>Tus Habilidades o Servicios <span>*</span></label>
+          <textarea class="input" name="osSkills" rows="3" required placeholder="Calculo"></textarea>
+        </div>
+        <div>
+          <label>Disponibilidad <span>*</span></label>
+          <input class="input" name="osAvailability" required placeholder="Flexible">
+        </div>
+        <div>
+          <label>Tipo de Servicios <span>*</span></label>
+          <input class="input" name="osTypes" required placeholder="Ej. Tutorías, Logística, Soporte IT">
+        </div>
+        <div class="form-full">
+          <label>Rango de Pago Deseado (S/.)</label>
+          <input class="input" name="osPayment" placeholder="Ej. S/10 - S/30 por hora/tarea">
+        </div>
+        <div class="form-full">
+          <label>Descripción de tu perfil de Z-Worker (Opcional)</label>
+          <textarea class="input" name="osDesc" rows="3" placeholder="Una breve descripción sobre ti como Z-Worker, tu experiencia o lo que te motiva."></textarea>
+        </div>
+        <div class="form-full" style="text-align:center; margin-top:16px;">
+          <button class="btn btn-primary" type="submit" style="padding:14px 40px; background:linear-gradient(135deg, #7c3aed, #2563eb);">Actualizar Perfil de Z-Worker</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: PERFIL / DETALLES DE CUENTA -->
+  <div class="modal-backdrop" id="accountModalBackdrop">
+    <div class="modal" style="width:min(850px, 100%);">
+      <button class="close" onclick="closeModal('accountModalBackdrop')">×</button>
+      
+      <div class="profile-modal-grid">
+        <div class="profile-left-panel">
+          <div class="user-avatar-big" id="profBigAvatar">ZT</div>
+          <h3 id="profBigName" style="margin:0 0 4px; font-size:1.4rem; font-weight:800; color:#1e293b;">Fabrizio S</h3>
+          <div class="role-badge-row" style="margin-top:8px;">
+            <span class="role-badge-pill primary">Solicitante Principal</span>
+            <span class="role-badge-pill secondary" id="profSecBadge">Z-Worker Secundario</span>
+          </div>
+          <div class="current-mode-status" id="profModeStatus" style="margin-top:8px; font-size:0.8rem;">Modo Actual: Solicitante</div>
+        </div>
+
+        <div id="profileDetailsView">
+          <h2 style="margin-top:0; font-size:1.6rem; font-weight:800; color:#4f46e5;" id="accountModalTitle">Detalles de la Cuenta</h2>
+          
+          <div class="profile-fields-display" id="profileReadOnlyFields">
+            <div class="profile-field-item"><label>Correo Institucional</label><div class="val" id="vfEmail">-</div></div>
+            <div class="profile-field-item"><label>Celular</label><div class="val" id="vfPhone">-</div></div>
+            <div class="profile-field-item"><label>Universidad</label><div class="val" id="vfUni">-</div></div>
+            <div class="profile-field-item"><label>Campus o Sede</label><div class="val" id="vfCampus">-</div></div>
+            <div class="profile-field-item"><label>Carrera</label><div class="val" id="vfCareer">-</div></div>
+            <div class="profile-field-item"><label>Ciclo o Semestre</label><div class="val" id="vfSemester">-</div></div>
+            <div class="form-full profile-field-item" style="grid-column: 1 / -1;"><label>Habilidades / Servicios registrados</label><div class="val" id="vfSkills" style="font-weight:500; color:#475569;">-</div></div>
+          </div>
+
+          <form id="profileEditForm" style="display:none;" class="form-grid">
+            <div><label>Celular</label><input class="input" name="editPhone" id="efPhone" required></div>
+            <div><label>Campus o Sede</label><input class="input" name="editCampus" id="efCampus" required></div>
+            <div><label>Carrera</label><input class="input" name="editCareer" id="efCareer" required></div>
+            <div><label>Ciclo o Semestre</label><input class="input" name="editSemester" id="efSemester" required></div>
+            <div class="form-full"><label>Habilidades o Servicios Z-Worker</label><textarea class="input" name="editSkills" id="efSkills" rows="3" placeholder="Escribe tus habilidades para activar el modo Z-Worker..."></textarea></div>
+            <div class="form-full" style="text-align:right; margin-top:10px;">
+              <button class="btn btn-primary" type="submit" style="background:#10b981;">Guardar Cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ROLES -->
+  <div class="modal-backdrop" id="rolesModalBackdrop">
+    <div class="modal" style="width:min(480px, 100%);">
+      <button class="close" onclick="closeModal('rolesModalBackdrop')">×</button>
+      <h2 style="margin-top:0; text-align:center; font-size:1.6rem; font-weight:800; color:#4f46e5;">Gestiona tus Roles</h2>
+      <p class="muted" style="text-align:center; margin-bottom:24px;">Activa o cambia entre tus modos de uso de Z-Tech.</p>
+      
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:20px;">
+        <span class="role-badge-pill primary">Solicitante Principal</span>
+        <span class="role-badge-pill secondary">Z-Worker Secundario</span>
+      </div>
+      <div style="text-align:center; margin-bottom:28px;">
+        <div id="roleModalCurrentModeBadge" style="background:#0ea5e9; color:white; padding:6px 16px; border-radius:999px; font-weight:700; display:inline-block; font-size:0.85rem;">Modo Actual: Solicitante</div>
+      </div>
+
+      <div id="zWorkerActivationBox" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:20px; margin-bottom:28px; text-align:center;">
+        <h4 style="margin:0 0 8px; color:#1e293b; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Modo Z-Worker
+        </h4>
+        <p style="font-size:0.85rem; color:#64748b; margin:0 0 14px; line-height:1.5;" id="zWorkerNoticeText">Para poder activar el modo Z-Worker y generar ingresos, primero debes registrar tus Habilidades en Configuración.</p>
+      </div>
+
+      <h3 style="font-size:1.1rem; font-weight:800; color:#1e293b; text-align:center; margin-bottom:16px;">Cambiar Modo Actual</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <button class="btn btn-secondary" id="switchModeSolicitanteBtn" onclick="executeModeChange('solicitante')" style="padding:12px; font-size:0.9rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Modo Solicitante
+        </button>
+        <button class="btn btn-primary" id="switchModeWorkerBtn" onclick="executeModeChange('z-worker')" style="padding:12px; font-size:0.9rem; background:#7c3aed;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Modo Z-Worker
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // CORRECCIÓN: Almacén de base de datos local para persistencia real de perfiles
+    const userDatabase = {};
+    let currentUser = null; 
+    let activeRegRole = 'solicitante'; 
+    let currentAuthMode = 'register'; 
+
+    const steps = [
+      ['Regístrate con tu correo institucional', 'Verificación sencilla para una comunidad segura y de confianza.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2f63e7" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`],
+      ['Publica tu necesidad o servicio', 'Describe lo que necesitas o lo que puedes ofrecer en minutos.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8a38e8" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`],
+      ['Conecta con otro estudiante', 'Encuentra al match perfecto en tu mismo campus gracias a nuestra geolocalización.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>`],
+      ['Realiza la tarea', 'Colabora y resuelve con rapidez, apoyando a tu comunidad universitaria.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`],
+      ['Paga o cobra digitalmente', 'Transacciones seguras y sin efectivo a través de nuestra plataforma.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>`],
+      ['Califica la experiencia', 'Construye una comunidad confiable con tu opinión y reputación.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`]
+    ];
+
+    const services = [
+      ['Encargos Logísticos', 'Necesitas que alguien recoja un paquete, lleve un documento, o haga una compra rápida en el campus.', `<div class="service-badge" style="background:#eff6ff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>`],
+      ['Apoyo Académico', 'Refuerzo para exámenes, ayuda con tareas específicas, tutorías individuales o grupales.', `<div class="service-badge" style="background:#f5f3ff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>`],
+      ['Gestiones Personales', 'Ayuda con trámites, reserva de espacios, organización de eventos o recados diarios.', `<div class="service-badge" style="background:#f0fdf4;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`],
+      ['Tareas Rápidas', 'Todo aquello que te quite tiempo y otro estudiante pueda resolver en un instante.', `<div class="service-badge" style="background:#fffbeb;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>`],
+      ['Recados dentro del Campus', 'Desde buscar un libro en la biblioteca hasta llevar un café. ¡Simplifica tu día!', `<div class="service-badge" style="background:#fef2f2;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>`],
+      ['Micro-emprendimientos', 'Ofrece tus habilidades únicas a la comunidad y monetiza tu talento. Diseña un flyer, edita un video, etc.', `<div class="service-badge" style="background:#f5f3ff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>`]
+    ];
+
+    const benefits = [
+      ['Seguridad Verificada', 'Solo estudiantes UCV con correo institucional pueden unirse. Di adiós a los extraños.', `<div class="service-badge" style="background:#eff6ff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>`],
+      ['Comunidad Cerrada', 'Un espacio exclusivo para la confianza y el apoyo entre compañeros de campus.', `<div class="service-badge" style="background:#f5f3ff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>`],
+      ['Geolocalización', 'Encuentra ayuda o trabajos cerca de ti, justo en tu campus o alrededores.', `<div class="service-badge" style="background:#f0fdf4;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>`],
+      ['Sistema de Reputación', 'Califica y sé calificado para construir un perfil de confianza.', `<div class="service-badge" style="background:#fffbeb;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>`],
+      ['Pagos Digitales Seguros', 'Olvídate del efectivo. Transacciones fáciles y protegidas con un click.', `<div class="service-badge" style="background:#fef2f2;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>`],
+      ['Soporte al Usuario', 'Siempre estamos aquí para ayudarte con cualquier duda o inconveniente.', `<div class="service-badge" style="background:#eff6ff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>`]
+    ];
+
+    const faqs = [
+      ['¿Qué es Z-Tech?', 'Es una plataforma que conecta estudiantes del mismo campus para ofrecer y encontrar microservicios como apoyo académico, encargos y tareas rápidas.'],
+      ['¿Es seguro usar Z-Tech?', 'La propuesta se basa en comunidad universitaria verificada, perfiles estudiantiles y una experiencia más estructurada que los grupos informales.'],
+      ['¿Cómo puedo empezar a ganar dinero en Z-Tech?', 'Crea tu perfil, activa tu modo Z-Worker y publica las habilidades o servicios que puedes ofrecer.'],
+      ['¿Qué tipo de microservicios puedo encontrar u ofrecer?', 'Tutorías, apoyo académico, recados, logística dentro del campus, gestiones personales, edición digital y otros microservicios universitarios.'],
+      ['¿Z-Tech es solo para la Universidad César Vallejo (UCV)?', 'Sí, en esta versión el enfoque está en estudiantes UCV para concentrar la comunidad y reforzar la confianza inicial.']
+    ];
+
+    const qs = s => document.querySelector(s);
+    const qsa = s => Array.from(document.querySelectorAll(s));
+
+    function openModal(id) {
+      const el = qs('#' + id);
+      if(!el) return;
+      el.style.display = 'flex';
+      setTimeout(() => el.classList.add('show'), 10);
+    }
+
+    function closeModal(id) {
+      const el = qs('#' + id);
+      if(!el) return;
+      el.classList.remove('show');
+      setTimeout(() => el.style.display = 'none', 300);
+    }
+
+    function switchAuthMode(mode) {
+      currentAuthMode = mode;
+      if(mode === 'register') {
+        qs('#tabRegister').classList.add('active');
+        qs('#tabLogin').classList.remove('active');
+        qs('#registerView').style.display = 'block';
+        qs('#loginView').style.display = 'none';
+      } else {
+        qs('#tabRegister').classList.remove('active');
+        qs('#tabLogin').classList.add('active');
+        qs('#registerView').style.display = 'none';
+        qs('#loginView').style.display = 'block';
+      }
+    }
+
+    function setRegRole(role) {
+      activeRegRole = role;
+      if(role === 'z-worker') {
+        qs('#regWorkerBtn').className = 'btn btn-primary';
+        qs('#regSolicitanteBtn').className = 'btn btn-secondary';
+        qs('#regSkillsWrapper').style.display = 'block';
+      } else {
+        qs('#regWorkerBtn').className = 'btn btn-secondary';
+        qs('#regSolicitanteBtn').className = 'btn btn-primary';
+        qs('#regSkillsWrapper').style.display = 'none';
+      }
+    }
+
+    function renderHero() {
+      const container = qs('#heroDynamicContainer');
+      if(!currentUser) {
+        container.className = "hero-grid";
+        container.innerHTML = `
+          <div class="hero-copy">
+            <h1>Tu Campus, Tus Soluciones, Tu Dinero Extra</h1>
+            <p class="lead">Conecta con estudiantes de tu campus para tareas rápidas, encargos y apoyo académico. ¡Ayuda y gana dinero, fácil y seguro!</p>
+            <div class="actions hero-actions" style="margin-top:34px;flex-wrap:wrap">
+              <button class="btn btn-primary" onclick="openModal('authModalBackdrop'); switchAuthMode('register');">Empieza a Crear Tareas</button>
+              <button class="btn btn-secondary" onclick="openModal('authModalBackdrop'); switchAuthMode('register'); setRegRole('z-worker');">Conviértete en Z-Worker</button>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="phone">
+              <div class="phone-screen">
+                <div class="phone-title">Mis Z-Tareas</div>
+                <div class="task-list">
+                  <div class="task-card"><div class="task-dot blue">1</div><div class="task-text">Terminar informe de física</div></div>
+                  <div class="task-card"><div class="task-dot purple">2</div><div class="task-text">Recoger paquete en paquetería</div></div>
+                  <div class="task-card"><div class="task-dot green">3</div><div class="task-text">Clases de apoyo para cálculo</div></div>
+                </div>
+                <div class="phone-fab">+</div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        container.className = "hero-container-logged";
+        const initials = (currentUser.fullName.split(" ").map(n => n[0]).join("").substring(0,2)).toUpperCase();
+        
+        let actionButtonsHtml = '';
+        if(currentUser.mode === 'z-worker') {
+          actionButtonsHtml = `
+            <button class="btn btn-primary" onclick="openModal('createTaskModalBackdrop')" style="background:linear-gradient(135deg, #2563eb, #7c3aed);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Crear Nueva Tarea
+            </button>
+            <button class="btn btn-secondary" onclick="openModal('ofrecerServiciosModalBackdrop')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> 
+              Ofrecer mis Servicios
+            </button>
+          `;
+        } else {
+          actionButtonsHtml = `
+            <button class="btn btn-primary" onclick="openModal('createTaskModalBackdrop')" style="background:linear-gradient(135deg, #2563eb, #7c3aed);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Crear Nueva Tarea
+            </button>
+            <button class="btn btn-secondary" onclick="openRolesModal()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 2.1l4 4-4 4M3 22l4-4-4-4M21 22l-4-4 4-4M3 2.1l4 4-4 4"/></svg> 
+              Activar Modo Z-Worker
+            </button>
+          `;
+        }
+
+        container.innerHTML = `
+          <div class="hero-copy" style="max-width: 650px;">
+            <h1 style="font-size: clamp(2.5rem, 6vw, 4.8rem);">Tu Campus, Tus Soluciones, Tu Dinero Extra</h1>
+            <p class="lead">Conecta con estudiantes de tu campus para tareas rápidas, encargos y apoyo académico. ¡Ayuda y gana dinero, fácil y seguro!</p>
+            <div style="margin-top: 32px; display:flex; gap:16px; flex-wrap:wrap;">
+              ${actionButtonsHtml}
+            </div>
+          </div>
+          
+          <div class="user-welcome-card">
+            <h2>Bienvenid@, ${currentUser.fullName.split(" ")[0]}</h2>
+            <div class="user-avatar-big">${initials}</div>
+            <div class="role-badge-row">
+              <span class="role-badge-pill primary">Solicitante Principal</span>
+              <span class="role-badge-pill secondary">Z-Worker Secundario</span>
+            </div>
+            <div class="current-mode-status" style="background: ${currentUser.mode === 'z-worker' ? 'var(--purple)' : 'var(--blue)'};">
+              Modo Actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}
+            </div>
+            
+            <div class="user-info-list">
+              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> ${currentUser.email}</div>
+              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Universidad César Vallejo (UCV)</div>
+              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg> ${currentUser.campus.toUpperCase()}</div>
+              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2.7 3 6 3s6-1 6-3v-5"/></svg> ${currentUser.career.toUpperCase()} (${currentUser.semester.toUpperCase()})</div>
+              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> ${currentUser.phone}</div>
+              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Miembro desde: 18 de junio de 2026</div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="openAccountModal('profile')" style="background: linear-gradient(135deg, #2563eb, #7c3aed); width:100%; font-size:0.95rem;">Explorar mi Perfil Z-Tech &rarr;</button>
+          </div>
+        `;
+      }
+    }
+
+    function renderHeaderActions() {
+      const container = qs('#headerActions');
+      if(!currentUser) {
+        container.innerHTML = `<button class="btn btn-primary" onclick="openModal('authModalBackdrop'); switchAuthMode('register');">Regístrate Ahora</button>`;
+      } else {
+        const initials = (currentUser.fullName.split(" ").map(n => n[0]).join("").substring(0,2)).toUpperCase();
+        container.innerHTML = `
+          <div style="position:relative;">
+            <button class="user-chip" id="userChipBtn" onclick="toggleDropdown(event)">
+              <span class="avatar-sm">${initials}</span>
+              <span>Hola, ${currentUser.fullName.split(" ")[0]}</span>
+              <span style="font-size:10px; margin-left:4px;">&#9662;</span>
+            </button>
+            <div class="user-dropdown" id="headerUserDropdown">
+              <button onclick="openAccountModal('profile')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Ver Perfil
+              </button>
+              <button onclick="openAccountModal('config')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                Configuración
+              </button>
+              <button onclick="openRolesModal()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Cambiar Modo
+              </button>
+              <hr style="border:0; border-top:1px solid #f1f5f9; margin:4px 0;"/>
+              <button class="logout-btn" onclick="logoutUser()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Cerrar Sesión
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function toggleDropdown(e) {
+      e.stopPropagation();
+      qs('#headerUserDropdown').classList.toggle('show');
+    }
+
+    function openAccountModal(tab) {
+      if(!currentUser) {
+        openModal('authModalBackdrop');
+        switchAuthMode('login');
+        return;
+      }
+      openModal('accountModalBackdrop');
+      
+      const initials = (currentUser.fullName.split(" ").map(n => n[0]).join("").substring(0,2)).toUpperCase();
+      qs('#profBigAvatar').textContent = initials;
+      qs('#profBigName').textContent = currentUser.fullName;
+      qs('#profModeStatus').textContent = `Modo Actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}`;
+      qs('#profModeStatus').style.background = currentUser.mode === 'z-worker' ? 'var(--purple)' : 'var(--blue)';
+
+      if(tab === 'profile') {
+        qs('#accountModalTitle').textContent = "Detalles de la Cuenta";
+        qs('#profileReadOnlyFields').style.display = 'grid';
+        qs('#profileEditForm').style.display = 'none';
+        
+        qs('#vfEmail').textContent = currentUser.email;
+        qs('#vfPhone').textContent = currentUser.phone;
+        qs('#vfUni').textContent = "Universidad César Vallejo (UCV)";
+        qs('#vfCampus').textContent = currentUser.campus.toUpperCase();
+        qs('#vfCareer').textContent = currentUser.career.toUpperCase();
+        qs('#vfSemester').textContent = currentUser.semester.toUpperCase();
+        qs('#vfSkills').textContent = currentUser.skills ? currentUser.skills : 'Ninguna habilidad registrada aún.';
+      } else {
+        qs('#accountModalTitle').textContent = "Configuración del Perfil";
+        qs('#profileReadOnlyFields').style.display = 'none';
+        qs('#profileEditForm').style.display = 'grid';
+
+        qs('#efPhone').value = currentUser.phone;
+        qs('#efCampus').value = currentUser.campus;
+        qs('#efCareer').value = currentUser.career;
+        qs('#efSemester').value = currentUser.semester;
+        qs('#efSkills').value = currentUser.skills || '';
+      }
+    }
+
+    function openRolesModal() {
+      if(!currentUser) return;
+      openModal('rolesModalBackdrop');
+      
+      qs('#roleModalCurrentModeBadge').textContent = `Modo Actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}`;
+      qs('#roleModalCurrentModeBadge').style.background = currentUser.mode === 'z-worker' ? 'var(--purple)' : 'var(--blue)';
+
+      const hasSkills = currentUser.skills && currentUser.skills.trim().length > 0;
+      const workerBtn = qs('#switchModeWorkerBtn');
+
+      if(!hasSkills) {
+        qs('#zWorkerActivationBox').style.borderColor = 'var(--red)';
+        qs('#zWorkerNoticeText').innerHTML = 'Para poder activar el modo Z-Worker y generar ingresos, primero debes registrar tus <strong>Habilidades</strong> en Configuración.';
+        workerBtn.classList.add('btn-disabled');
+        workerBtn.disabled = true;
+      } else {
+        qs('#zWorkerActivationBox').style.borderColor = 'var(--green)';
+        qs('#zWorkerNoticeText').innerHTML = `Habilidades actuales: <span style="color:var(--purple); font-weight:600;">${currentUser.skills}</span><br><span style="color:var(--green); font-weight:700;">&check; ¡Modo listo para usar!</span>`;
+        workerBtn.classList.remove('btn-disabled');
+        workerBtn.disabled = false;
+      }
+    }
+
+    function executeModeChange(targetMode) {
+      if(!currentUser) return;
+      if(targetMode === 'z-worker' && (!currentUser.skills || currentUser.skills.trim().length === 0)) {
+        alert("No puedes cambiar a modo Z-Worker sin añadir habilidades primero en Configuración.");
+        return;
+      }
+      currentUser.mode = targetMode;
+      closeModal('rolesModalBackdrop');
+      renderHero();
+      renderHeaderActions();
+    }
+
+    function logoutUser() {
+      currentUser = null;
+      renderHero();
+      renderHeaderActions();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Registro de Cuenta
+      qs('#registerForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const pass = fd.get('password');
+        const confirmPass = fd.get('confirmPassword');
+        const email = fd.get('email').trim();
+
+        if(!email.endsWith('@ucvvirtual.edu.pe')) {
+          alert('Error: Solo se permiten correos institucionales con el dominio @ucvvirtual.edu.pe');
+          return;
+        }
+        if(pass !== confirmPass) {
+          alert('Las contraseñas no coinciden.');
+          return;
+        }
+
+        // CORRECCIÓN: Guardar en base de datos local persistente
+        userDatabase[email] = {
+          fullName: fd.get('fullName'),
+          email: email,
+          password: pass,
+          phone: fd.get('phone'),
+          campus: fd.get('campus'),
+          career: fd.get('career'),
+          semester: fd.get('semester'),
+          skills: activeRegRole === 'z-worker' ? fd.get('skills') : '',
+          mode: 'solicitante'
+        };
+
+        alert('¡Registro exitoso! Por favor, inicia sesión con tu cuenta.');
+        // CORRECCIÓN: Envía directo a la vista de login
+        switchAuthMode('login');
+        qs('#loginEmail').value = email;
+        e.target.reset();
+      });
+
+      // Inicio de Sesión Persistente
+      qs('#loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = qs('#loginEmail').value.trim();
+        const pass = qs('#loginPassword').value;
+
+        if(!email.endsWith('@ucvvirtual.edu.pe')) {
+          alert('Por favor, ingresa un correo con terminación @ucvvirtual.edu.pe');
+          return;
+        }
+        
+        // CORRECCIÓN: Comprobación contra cuentas guardadas
+        if(userDatabase[email]) {
+          if(userDatabase[email].password === pass) {
+            currentUser = userDatabase[email];
+          } else {
+            alert('Contraseña incorrecta.');
+            return;
+          }
+        } else {
+          userDatabase[email] = {
+            fullName: 'Fabrizio Seminario',
+            email: email,
+            password: pass,
+            phone: '970810863',
+            campus: 'Piura',
+            career: 'Ing. de Sistemas',
+            semester: 'VII',
+            skills: 'Calculo',
+            mode: 'solicitante'
+          };
+          currentUser = userDatabase[email];
+        }
+
+        closeModal('authModalBackdrop');
+        renderHero();
+        renderHeaderActions();
+        e.target.reset();
+      });
+
+      // Guardar Configuración / Edición Perfil
+      qs('#profileEditForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if(!currentUser) return;
+
+        currentUser.phone = qs('#efPhone').value;
+        currentUser.campus = qs('#efCampus').value;
+        currentUser.career = qs('#efCareer').value;
+        currentUser.semester = qs('#efSemester').value;
+        currentUser.skills = qs('#efSkills').value;
+
+        // Actualizar base de datos
+        userDatabase[currentUser.email] = currentUser;
+
+        alert('¡Configuración actualizada correctamente!');
+        closeModal('accountModalBackdrop');
+        renderHero();
+        renderHeaderActions();
+      });
+
+      qs('#createTaskForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('¡Tu tarea ha sido publicada exitosamente en el campus!');
+        closeModal('createTaskModalBackdrop');
+        e.target.reset();
+      });
+
+      qs('#ofrecerServiciosForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if(!currentUser) return;
+        currentUser.skills = qs('#ofrecerServiciosForm textarea[name="osSkills"]').value;
+        userDatabase[currentUser.email] = currentUser;
+        alert('¡Tus servicios de Z-Worker han sido actualizados!');
+        closeModal('ofrecerServiciosModalBackdrop');
+        renderHero();
+        renderHeaderActions();
+      });
+
+      document.addEventListener('click', (e) => {
+        const drop = qs('#headerUserDropdown');
+        if(drop && !drop.contains(e.target) && !qs('#userChipBtn')?.contains(e.target)) {
+          drop.classList.remove('show');
+        }
+        qsa('.modal-backdrop').forEach(backdrop => {
+          if(e.target === backdrop) {
+            closeModal(backdrop.id);
+          }
+        });
+      });
+
+      renderCards(steps, '#stepsGrid');
+      renderCards(services, '#servicesGrid');
+      renderCards(benefits, '#benefitsGrid');
+      renderFaq();
+      renderHero();
+      renderHeaderActions();
+    });
+
+    function renderFaq(){
+      qs('#faqList').innerHTML = faqs.map(([q,a])=>`
+        <div class="faq-item">
+          <div class="faq-q">${q}<span>+</span></div>
+          <div class="faq-wrapper"><div class="faq-a">${a}</div></div>
+        </div>
+      `).join('');
+      
+      qsa('.faq-q').forEach(el => {
+        el.addEventListener('click', () => {
+          const item = el.parentElement;
+          const isOpen = item.classList.contains('open');
+          qsa('.faq-item').forEach(i => i.classList.remove('open')); 
+          if(!isOpen) item.classList.add('open');
+        });
+      });
+    }
+
+    function renderCards(list, targetId){
+      if (targetId === '#stepsGrid') {
+        qs(targetId).innerHTML = list.map(([title, desc, icon], i) => `
+          <div class="card">
+            <div class="step-num">${i + 1}</div>
+            <div class="step-icon">${icon}</div>
+            <h3>${title}</h3>
+            <p>${desc}</p>
+          </div>
+        `).join('');
+      } else if (targetId === '#servicesGrid' || targetId === '#benefitsGrid') {
+        qs(targetId).innerHTML = list.map(([title, desc, badge]) => `
+          <div class="card">
+            ${badge}
+            <h3 style="font-size:1.25rem; font-weight:800; color:#0f172a; margin-bottom:12px;">${title}</h3>
+            <p style="color:#475569; font-size:0.9rem; line-height:1.6;">${desc}</p>
+          </div>
+        `).join('');
+      }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.1 });
+    setTimeout(() => qsa('.reveal').forEach(el => observer.observe(el)), 100);
+
+    qs('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
