@@ -13,197 +13,211 @@
       --blue:#2f63e7;--purple:#8a38e8;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;
       --shadow:0 14px 34px rgba(58,74,107,.10);--shadow-lg:0 24px 70px rgba(50,68,102,.16);--radius:26px;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} 
-    body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 15%, rgba(47,99,231,.08), transparent 18%),radial-gradient(circle at 90% 18%, rgba(138,56,232,.10), transparent 22%),var(--bg);color:var(--text);overflow-x:hidden;}    
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 10% 15%, rgba(47,99,231,.08), transparent 18%),radial-gradient(circle at 90% 18%, rgba(138,56,232,.10), transparent 22%),var(--bg);color:var(--text);overflow-x:hidden;}
     a{text-decoration:none;color:inherit} button,input,textarea,select{font:inherit}
-    
+
     .container{max-width:1220px;margin:0 auto;padding:0 32px}
-    
-    /* Header */
+
     .header{position:sticky;top:0;z-index:30;background:rgba(237,241,251,.84);backdrop-filter:blur(14px)}
     .header-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0}
     .nav{display:flex;gap:32px;color:#38465d;font-weight:700;align-items:center}.nav a{line-height:1.35}.nav a:hover{color:var(--blue)}
     .logo{display:flex;align-items:center;gap:12px;font-weight:900;color:#20293a}
     .logo img{height:40px;object-fit:contain}
-    
-    /* Botones y Acciones Uniformes */
+
     .actions{display:flex;gap:14px;align-items:center}
-    .btn{border:0;border-radius:999px;padding:16px 28px;font-weight:800;cursor:pointer;transition:.24s transform,.24s box-shadow,.24s background,.24s color;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+    .btn{border:0;border-radius:999px;padding:16px 28px;font-weight:800;cursor:pointer;transition:.24s transform,.24s box-shadow,.24s background,.24s color;display:inline-flex;align-items:center;justify-content:center;gap:8px}
     .btn:hover{transform:translateY(-2px)}
     .btn-primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 16px 30px rgba(88,90,231,.28);background-size:160% 160%;animation:gradientShift 8s ease infinite}
-    .btn-secondary{background:#fff;border:1.5px solid #d6dfef;color:#3156b7;box-shadow:0 8px 24px rgba(87,105,141,.08)} .btn-dark{background:#0f172a;color:#fff}
-    
-    /* Hero */
+    .btn-secondary{background:#fff;border:1.5px solid #d6dfef;color:#3156b7;box-shadow:0 8px 24px rgba(87,105,141,.08)}
+    .btn-dark{background:#0f172a;color:#fff}
+    .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 16px 30px rgba(220,38,38,.20)}
+    .btn-success{background:linear-gradient(135deg,#059669,#10b981);color:#fff;box-shadow:0 16px 30px rgba(16,185,129,.20)}
+    .btn-disabled{opacity:.55;cursor:not-allowed;pointer-events:none}
+
     .hero{padding:64px 0 72px;overflow:hidden}
     .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center}
-    .hero-container-logged { display: flex; align-items: center; justify-content: space-between; gap: 54px; margin-top: 20px;}
+    .hero-container-logged{display:flex;align-items:center;justify-content:space-between;gap:54px;margin-top:20px}
     h1{font-size:clamp(3.2rem,7vw,5.7rem);line-height:.93;margin:0;font-weight:900;letter-spacing:-.05em;max-width:700px;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
     .lead{font-size:1.18rem;color:#49576d;max-width:620px;margin-top:22px;line-height:1.6}
     .hero-card{background:transparent;border:0;border-radius:0;padding:0;box-shadow:none;display:flex;justify-content:center;opacity:0;transform:translateY(30px) scale(.98);animation:floatIn .9s cubic-bezier(.2,.8,.2,1) .22s forwards}
-    
-    .phone{width:min(100%,400px);aspect-ratio: 0.58;border-radius:42px;background:#0f172a;padding:10px;box-shadow:0 32px 60px rgba(38,50,80,.18);position:relative}
+
+    .phone{width:min(100%,400px);aspect-ratio:.58;border-radius:42px;background:#0f172a;padding:10px;box-shadow:0 32px 60px rgba(38,50,80,.18);position:relative}
     .phone::before{content:'';position:absolute;top:16px;left:50%;transform:translateX(-50%);width:82px;height:8px;border-radius:999px;background:#3a4357;z-index:2}
     .phone-screen{height:100%;border-radius:34px;background:linear-gradient(180deg,#eff3fd,#eaf0fb);padding:72px 18px 22px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.9)}
     .phone-title{text-align:center;font-size:1.15rem;font-weight:900;color:#5141bf;margin-bottom:26px}
-    .task-list{display:grid;gap:14px}.task-card{background:#fff;border-radius:16px;padding:16px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 20px rgba(66,81,109,.1);border:1px solid #edf1f7}
-    .task-dot{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px;flex:none}.task-dot.blue{background:#4f83f1}.task-dot.purple{background:#a855f7}.task-dot.green{background:#22c55e}
+    .task-list{display:grid;gap:14px}
+    .task-card{background:#fff;border-radius:16px;padding:16px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 20px rgba(66,81,109,.1);border:1px solid #edf1f7}
+    .task-dot{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px;flex:none}
+    .task-dot.blue{background:#4f83f1}.task-dot.purple{background:#a855f7}.task-dot.green{background:#22c55e}
     .task-text{font-size:1rem;font-weight:700;line-height:1.45;color:#283449}
     .phone-fab{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:48px;height:48px;border-radius:999px;background:linear-gradient(135deg,#5e75ff,#b03de6);color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 14px 28px rgba(88,90,231,.3)}
-    
-    /* Secciones Comunes */
+
     .section{padding:84px 0}.section.alt{background:#fff}.section.soft{background:#eef2ff}.section.grad{background:linear-gradient(135deg,#eef2ff,#f5f3ff)}
     .section-head{text-align:center;max-width:860px;margin:0 auto 48px}
     .section-head h2{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin:0 0 18px;font-weight:900}
     .section-head p{font-size:1.12rem;color:#475569;line-height:1.75}
     .grid-3,.grid-2{display:grid;gap:32px}.grid-3{grid-template-columns:repeat(3,1fr)} .grid-2{grid-template-columns:repeat(2,1fr)}
-    
-    /* Tarjetas base */
-    .card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:36px 28px;box-shadow:0 10px 25px rgba(0, 0, 0, 0.03);transition:transform .25s ease, box-shadow .25s ease}
-    .card h3{margin:0 0 12px;font-size:1.35rem;font-weight:800;color:#1e293b}.card p{margin:0;color:#64748b;font-size:0.95rem;line-height:1.6}.card:hover,.faq-item:hover{transform:translateY(-6px);box-shadow:0 20px 38px rgba(15,23,42,0.08)}
-    .tone-red{background:#fff1f2; border: 1px solid #ffe4e6;}.tone-green{background:#f0fdf4; border: 1px solid #dcfce7;}.tone-yellow{background:#fefce8; border: 1px solid #fef9c3;}
-    
-    /* Pasos */
-    .steps .step-num {
-      width: 38px;height: 38px;border-radius: 50%;background: #ffffff;border: 1.5px solid #3b82f6;
-      display: grid;place-items: center;font-weight: 700;color: #1e293b;font-size: 1.05rem;margin: 0 auto 20px;
-    }
-    .steps .step-icon {display: flex;justify-content: center;align-items: center;margin-bottom: 22px;height: 32px;}
-    .steps h3 {color: #6b21a8; font-size: 1.25rem; font-weight: 700; text-align:center;}
-    .steps p {text-align:center;}
 
-    /* Degradados de texto */
-    .gradient-text-blue {
-      background: linear-gradient(135deg, #1d4ed8, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .gradient-text-purple {
-      background: linear-gradient(135deg, #7c3aed, #db2777); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .gradient-text-green {
-      background: linear-gradient(135deg, #0d9488, #10b981); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .gradient-text-blue-red {
-      background: linear-gradient(135deg, #2563eb, #dc2626); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    
-    .service-badge {
-      width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 24px;
-    }
-    
-    /* Bloques de Ayuda y Oportunidades */
-    .two-panel .card {
-      display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 48px; border: none;
-    }
-    .two-panel h3 { font-size: 1.75rem; font-weight: 800; margin: 20px 0 16px; }
-    .two-panel p { font-size: 1.05rem; line-height: 1.65; margin-bottom: 32px; }
+    .card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:36px 28px;box-shadow:0 10px 25px rgba(0,0,0,.03);transition:transform .25s ease, box-shadow .25s ease}
+    .card h3{margin:0 0 12px;font-size:1.35rem;font-weight:800;color:#1e293b}
+    .card p{margin:0;color:#64748b;font-size:.95rem;line-height:1.6}
+    .card:hover,.faq-item:hover{transform:translateY(-6px);box-shadow:0 20px 38px rgba(15,23,42,0.08)}
+    .tone-red{background:#fff1f2;border:1px solid #ffe4e6}
+    .tone-green{background:#f0fdf4;border:1px solid #dcfce7}
+    .tone-yellow{background:#fefce8;border:1px solid #fef9c3}
 
-    /* Comparativa de Grupos */
-    .comparison-title { color: #1e3a8a; font-weight: 900; }
-    .comparison-title span { font-weight:900; }
-    .comparison .card ul { padding: 0; margin: 24px 0 0; list-style: none; display: grid; gap: 16px; }
-    .comparison .card li { display: flex; gap: 12px; align-items: center; font-size: 1rem; font-weight: 500; color: #334155; }
-    
-    /* FAQ Animado */
-    .faq { display: grid; gap: 0; max-width: 800px; margin: 0 auto; }
-    .faq-item { background: transparent; border: none; border-bottom: 1px solid #e2e8f0; border-radius: 0; box-shadow: none; transition: none; }
-    .faq-item:hover { transform: none; box-shadow: none; }
-    .faq-q { padding: 24px 0; font-size: 1.05rem; color: #1e293b; font-weight: 600; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    .faq-q span { color: #3b82f6; font-size: 1.5rem; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .faq-wrapper { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s linear; }
-    .faq-a { padding: 0 0 24px 0; color: #64748b; font-size: 0.98rem; line-height: 1.7; }
-    .faq-item.open .faq-wrapper { max-height: 200px; opacity: 1; }
-    .faq-item.open .faq-q span { transform: rotate(45deg); }
+    .steps .step-num{width:38px;height:38px;border-radius:50%;background:#ffffff;border:1.5px solid #3b82f6;display:grid;place-items:center;font-weight:700;color:#1e293b;font-size:1.05rem;margin:0 auto 20px}
+    .steps .step-icon{display:flex;justify-content:center;align-items:center;margin-bottom:22px;height:32px}
+    .steps h3{color:#6b21a8;font-size:1.25rem;font-weight:700;text-align:center}
+    .steps p{text-align:center}
 
-    /* Bloque CTA */
-    .cta-modern {
-      padding: 100px 0; background: linear-gradient(135deg, #1e40af, #6b21a8); color: #fff; text-align: center;
-    }
-    .cta-modern h2 { font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 900; margin: 0 0 20px; letter-spacing: -0.03em; }
-    .cta-modern p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto 40px; }
-    .btn-white-pill {
-      background: #ffffff; color: #2563eb; font-weight: 800; font-size: 1.1rem; padding: 16px 36px; border-radius: 999px; border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: 0.25s ease; display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-white-pill:hover { transform: scale(1.04); box-shadow: 0 14px 30px rgba(0,0,0,0.2); }
+    .gradient-text-blue{background:linear-gradient(135deg,#1d4ed8,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .gradient-text-purple{background:linear-gradient(135deg,#7c3aed,#db2777);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .gradient-text-green{background:linear-gradient(135deg,#0d9488,#10b981);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .gradient-text-blue-red{background:linear-gradient(135deg,#2563eb,#dc2626);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-    .footer { background: #1e293b; color: #94a3b8; padding: 80px 0 40px; font-size: 0.92rem; }
-    .footer h4 { color: #ffffff; font-size: 1rem; font-weight: 700; margin: 0 0 20px; }
-    .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-    .footer a:hover { color: #ffffff; }
+    .service-badge{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;margin-bottom:24px}
 
-    /* Modales Avanzados */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.72);display:none;align-items:center;justify-content:center;padding:16px;z-index:100;opacity:0;transition:opacity 0.3s ease-in-out;}
-    .modal-backdrop.show{display:flex;opacity:1;}
-    .modal{width:min(800px,100%);max-height:90vh;overflow-y:auto;background:#fff;border-radius:24px;padding:40px;box-shadow:var(--shadow-lg);position:relative;transform:translateY(30px);transition:transform 0.3s ease-in-out;}
-    .modal-backdrop.show .modal{transform:translateY(0);}
-    
-    /* Separación y centrado de la X */
-    .close{position:absolute;top:32px;right:32px;border:0;background:#f1f5f9;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:grid;place-items:center;color:#64748b;transition:background 0.2s;z-index:10;}
-    .close:hover{background:#e2e8f0;}
-    
-    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+    .two-panel .card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:48px;border:none}
+    .two-panel h3{font-size:1.75rem;font-weight:800;margin:20px 0 16px}
+    .two-panel p{font-size:1.05rem;line-height:1.65;margin-bottom:32px}
+
+    .comparison-title{color:#1e3a8a;font-weight:900}
+    .comparison-title span{font-weight:900}
+    .comparison .card ul{padding:0;margin:24px 0 0;list-style:none;display:grid;gap:16px}
+    .comparison .card li{display:flex;gap:12px;align-items:center;font-size:1rem;font-weight:500;color:#334155}
+
+    .faq{display:grid;gap:0;max-width:800px;margin:0 auto}
+    .faq-item{background:transparent;border:none;border-bottom:1px solid #e2e8f0;border-radius:0;box-shadow:none;transition:none}
+    .faq-item:hover{transform:none;box-shadow:none}
+    .faq-q{padding:24px 0;font-size:1.05rem;color:#1e293b;font-weight:600;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .faq-q span{color:#3b82f6;font-size:1.5rem;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+    .faq-wrapper{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s cubic-bezier(.4,0,.2,1), opacity .3s linear}
+    .faq-a{padding:0 0 24px 0;color:#64748b;font-size:.98rem;line-height:1.7}
+    .faq-item.open .faq-wrapper{max-height:200px;opacity:1}
+    .faq-item.open .faq-q span{transform:rotate(45deg)}
+
+    .cta-modern{padding:100px 0;background:linear-gradient(135deg,#1e40af,#6b21a8);color:#fff;text-align:center}
+    .cta-modern h2{font-size:clamp(2.3rem,5vw,3.8rem);font-weight:900;margin:0 0 20px;letter-spacing:-.03em}
+    .cta-modern p{font-size:1.25rem;opacity:.9;max-width:700px;margin:0 auto 40px}
+    .btn-white-pill{background:#ffffff;color:#2563eb;font-weight:800;font-size:1.1rem;padding:16px 36px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,0.15);transition:.25s ease;display:inline-flex;align-items:center;gap:8px}
+    .btn-white-pill:hover{transform:scale(1.04);box-shadow:0 14px 30px rgba(0,0,0,0.2)}
+
+    .footer{background:#1e293b;color:#94a3b8;padding:80px 0 40px;font-size:.92rem}
+    .footer h4{color:#ffffff;font-size:1rem;font-weight:700;margin:0 0 20px}
+    .footer ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .footer a:hover{color:#ffffff}
+
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.72);display:none;align-items:center;justify-content:center;padding:16px;z-index:100;opacity:0;transition:opacity .3s ease-in-out}
+    .modal-backdrop.show{display:flex;opacity:1}
+    .modal{width:min(800px,100%);max-height:90vh;overflow-y:auto;background:#fff;border-radius:24px;padding:40px;box-shadow:var(--shadow-lg);position:relative;transform:translateY(30px);transition:transform .3s ease-in-out}
+    .modal-backdrop.show .modal{transform:translateY(0)}
+
+    .close{position:absolute;top:32px;right:32px;border:0;background:#f1f5f9;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:grid;place-items:center;color:#64748b;transition:background .2s;z-index:10}
+    .close:hover{background:#e2e8f0}
+
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
     .form-full{grid-column:1/-1}
     label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;color:#334155}
-    label span { color: var(--red); }
-    .input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px 16px;outline:none;background:#fff;color:#1e293b;}
+    label span{color:var(--red)}
+    .input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px 16px;outline:none;background:#fff;color:#1e293b}
     .input:focus,select:focus,textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 4px rgba(96,165,250,.18)}
-    
-    /* Bloqueo estricto para universidad */
-    .input-readonly { background: #f1f5f9; color: #64748b; cursor: not-allowed; border-color: #cbd5e1; font-weight: 500; }
+    .input-readonly{background:#f1f5f9;color:#64748b;cursor:not-allowed;border-color:#cbd5e1;font-weight:500}
 
-    /* Pestañas de Login/Registro */
-    .auth-tabs { display:flex; background:#f1f5f9; padding:6px; border-radius:14px; margin-bottom:28px; gap:4px; }
-    .auth-tab { flex:1; padding:12px; border:0; background:transparent; border-radius:10px; font-weight:700; color:#64748b; cursor:pointer; transition:0.2s; text-align:center; }
-    .auth-tab.active { background:#ffffff; color:#7c3aed; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    .auth-tabs{display:flex;background:#f1f5f9;padding:6px;border-radius:14px;margin-bottom:28px;gap:4px}
+    .auth-tab{flex:1;padding:12px;border:0;background:transparent;border-radius:10px;font-weight:700;color:#64748b;cursor:pointer;transition:.2s;text-align:center}
+    .auth-tab.active{background:#ffffff;color:#7c3aed;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
 
-    /* Tarjeta del Dashboard */
-    .user-welcome-card { background:#ffffff; border-radius:24px; padding:40px; box-shadow:var(--shadow); border:1px solid #e2e8f0; width:100%; max-width:420px; text-align:center; margin:0 auto; }
-    .user-welcome-card h2 { font-size:1.8rem; font-weight:800; color:#4338ca; margin:0 0 24px; }
-    .user-avatar-big { width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg, #4f46e5, #a855f7); color:#fff; display:grid; place-items:center; font-size:2.5rem; font-weight:800; margin:0 auto 20px; box-shadow:0 10px 25px rgba(79,70,229,0.3); }
-    .role-badge-row { display:flex; justify-content:center; gap:8px; margin-bottom:14px; }
-    .role-badge-pill { padding:6px 14px; border-radius:999px; font-size:0.78rem; font-weight:700; }
-    .role-badge-pill.primary { background:#dbeafe; color:#2563eb; }
-    .role-badge-pill.secondary { background:#f3e8ff; color:#9333ea; }
-    .current-mode-status { background:#2563eb; color:#ffffff; padding:8px 18px; border-radius:999px; font-weight:700; font-size:0.88rem; display:inline-block; margin-bottom:24px; }
-    .user-info-list { text-align:left; display:grid; gap:12px; border-top:1px solid #f1f5f9; padding-top:20px; margin-bottom:28px; }
-    .user-info-row { display:flex; align-items:center; gap:12px; font-size:0.88rem; color:#475569; }
-    .user-info-row svg { flex-shrink:0; color:#94a3b8; }
+    .user-welcome-card{background:#ffffff;border-radius:24px;padding:40px;box-shadow:var(--shadow);border:1px solid #e2e8f0;width:100%;max-width:420px;text-align:center;margin:0 auto}
+    .user-welcome-card h2{font-size:1.8rem;font-weight:800;color:#4338ca;margin:0 0 24px}
+    .user-avatar-big{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#a855f7);color:#fff;display:grid;place-items:center;font-size:2.5rem;font-weight:800;margin:0 auto 20px;box-shadow:0 10px 25px rgba(79,70,229,0.3);overflow:hidden}
+    .user-avatar-big img{width:100%;height:100%;object-fit:cover}
+    .role-badge-row{display:flex;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+    .role-badge-pill{padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:700}
+    .role-badge-pill.primary{background:#dbeafe;color:#2563eb}
+    .role-badge-pill.secondary{background:#f3e8ff;color:#9333ea}
+    .current-mode-status{background:#2563eb;color:#ffffff;padding:8px 18px;border-radius:999px;font-weight:700;font-size:.88rem;display:inline-block;margin-bottom:24px}
+    .user-info-list{text-align:left;display:grid;gap:12px;border-top:1px solid #f1f5f9;padding-top:20px;margin-bottom:28px}
+    .user-info-row{display:flex;align-items:center;gap:12px;font-size:.88rem;color:#475569}
+    .user-info-row svg{flex-shrink:0;color:#94a3b8}
 
-    /* Dropdown Header */
-    .user-chip{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #d6dfef;padding:6px 16px;border-radius:999px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.03);font-weight:700;color:#1e293b;transition:0.2s; position:relative; }
-    .user-chip:hover { background:#f8fafc; }
-    .user-chip .avatar-sm{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg, #3b82f6, #8b5cf6);color:#fff;display:grid;place-items:center;font-weight:800;font-size:0.88rem;}
-    .user-dropdown { position:absolute; top:calc(100% + 8px); right:0; width:220px; background:#fff; border:1px solid #e2e8f0; border-radius:16px; box-shadow:var(--shadow-lg); padding:10px; display:none; z-index:100; flex-direction:column; gap:2px; }
-    .user-dropdown.show { display:flex; }
-    .user-dropdown button { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:transparent; border:0; padding:12px 14px; border-radius:10px; cursor:pointer; font-weight:600; color:#475569; transition:0.2s; }
-    .user-dropdown button:hover { background:#eff6ff; color:#2563eb; }
-    .user-dropdown button svg { color:#94a3b8; }
-    .user-dropdown button.logout-btn { color:#dc2626; }
-    .user-dropdown button.logout-btn:hover { background:#fef2f2; color:#b91c1c; }
-    .user-dropdown button.logout-btn svg { color:#f87171; }
+    .user-chip{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #d6dfef;padding:6px 16px;border-radius:999px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.03);font-weight:700;color:#1e293b;transition:.2s;position:relative}
+    .user-chip:hover{background:#f8fafc}
+    .user-chip .avatar-sm{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.88rem;overflow:hidden}
+    .user-chip .avatar-sm img{width:100%;height:100%;object-fit:cover}
+    .user-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:220px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:var(--shadow-lg);padding:10px;display:none;z-index:100;flex-direction:column;gap:2px}
+    .user-dropdown.show{display:flex}
+    .user-dropdown button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:transparent;border:0;padding:12px 14px;border-radius:10px;cursor:pointer;font-weight:600;color:#475569;transition:.2s}
+    .user-dropdown button:hover{background:#eff6ff;color:#2563eb}
+    .user-dropdown button svg{color:#94a3b8}
+    .user-dropdown button.logout-btn{color:#dc2626}
+    .user-dropdown button.logout-btn:hover{background:#fef2f2;color:#b91c1c}
+    .user-dropdown button.logout-btn svg{color:#f87171}
 
-    /* Modal Perfil */
-    .profile-modal-grid { display:grid; grid-template-columns: 240px 1fr; gap:32px; }
-    .profile-left-panel { text-align:center; border-right:1px solid #e2e8f0; padding-right:32px; display:flex; flex-direction:column; align-items:center; }
-    .profile-fields-display { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
-    .profile-field-item { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px 16px; }
-    .profile-field-item label { font-size:0.78rem; color:#64748b; margin-bottom:4px; font-weight:600; }
-    .profile-field-item .val { font-size:0.95rem; font-weight:700; color:#1e293b; word-break:break-all; }
+    .profile-modal-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
+    .profile-left-panel{text-align:center;border-right:1px solid #e2e8f0;padding-right:32px;display:flex;flex-direction:column;align-items:center}
+    .profile-fields-display{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .profile-field-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 16px}
+    .profile-field-item label{font-size:.78rem;color:#64748b;margin-bottom:4px;font-weight:600}
+    .profile-field-item .val{font-size:.95rem;font-weight:700;color:#1e293b;word-break:break-all}
+
+    .panel-toolbar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin:24px 0 28px}
+    .panel-list{display:grid;gap:16px}
+    .task-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:20px}
+    .task-item-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:12px}
+    .task-meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .meta-pill{padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:700}
+    .meta-blue{background:#dbeafe;color:#2563eb}
+    .meta-purple{background:#f3e8ff;color:#9333ea}
+    .meta-green{background:#dcfce7;color:#16a34a}
+    .meta-red{background:#fee2e2;color:#dc2626}
+    .meta-yellow{background:#fef3c7;color:#b45309}
+    .empty-box{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:18px;padding:28px;text-align:center;color:#64748b}
+    .panel-section-title{font-size:1.8rem;font-weight:800;color:#1e293b;margin:0 0 8px}
+    .panel-section-subtitle{color:#64748b;margin:0 0 12px}
+    .task-actions{display:flex;flex-wrap:wrap;gap:10px}
+    .mini-btn{border:0;border-radius:12px;padding:10px 16px;font-weight:800;cursor:pointer}
+    .mini-btn.blue{background:#2563eb;color:#fff}
+    .mini-btn.purple{background:#9333ea;color:#fff}
+    .mini-btn.green{background:#10b981;color:#fff}
+    .mini-btn.red{background:#ef4444;color:#fff}
+    .mini-btn.gray{background:#e2e8f0;color:#334155}
+    .file-dropzone{border:1.5px dashed #cbd5e1;border-radius:16px;padding:16px;background:#f8fafc}
+    .attach-list{display:grid;gap:8px;margin-top:12px}
+    .attach-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid #e2e8f0}
+    .attach-preview{display:flex;align-items:center;gap:12px;min-width:0}
+    .attach-thumb{width:48px;height:48px;border-radius:12px;object-fit:cover;background:#e2e8f0;flex:none}
+    .attach-name{font-size:.9rem;font-weight:700;color:#1e293b;word-break:break-all}
+    .attach-meta{font-size:.8rem;color:#64748b}
+    .delivery-box{margin-top:18px;padding:18px;border:1px solid #dbe3f1;border-radius:16px;background:#fff}
+    .info-note{font-size:.92rem;color:#64748b;line-height:1.6}
+    .divider-soft{height:1px;background:#e2e8f0;margin:18px 0}
+    .section-label-soft{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:#64748b;font-weight:800;margin-bottom:10px}
+    .profile-upload-box{width:100%;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:16px;padding:14px;margin-top:8px}
+    .worker-profile-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px}
+    .worker-profile-head{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+    .worker-profile-avatar{width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#a855f7);display:grid;place-items:center;color:#fff;font-size:1.3rem;font-weight:800;overflow:hidden;flex:none}
+    .worker-profile-avatar img{width:100%;height:100%;object-fit:cover}
 
     .mobile-toggle{display:none}
-    .reveal{opacity:0;transform:translateY(35px);transition:opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)}
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1)}
     .reveal.show{opacity:1;transform:translateY(0)}
     .hero-copy > *{opacity:0;transform:translateY(24px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
     .hero-copy > *:nth-child(1){animation-delay:.05s}.hero-copy > *:nth-child(2){animation-delay:.14s}.hero-copy > *:nth-child(3){animation-delay:.24s}.hero-copy > *:nth-child(4){animation-delay:.34s}
-    
+
     @keyframes rise{to{opacity:1;transform:translateY(0)}}
     @keyframes floatIn{to{opacity:1;transform:translateY(0) scale(1)}}
     @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    
-    @media (max-width: 980px) {
-      .hero{padding:24px 0 54px}.hero-grid,.grid-3,.grid-2,.two-panel,.comparison,.footer-grid,.form-grid,.profile-modal-grid{grid-template-columns:1fr}
-      .profile-left-panel { border-right:0; padding-right:0; border-bottom:1px solid #e2e8f0; padding-bottom:24px; }
+
+    @media (max-width:980px){
+      .hero{padding:24px 0 54px}
+      .hero-grid,.grid-3,.grid-2,.two-panel,.comparison,.footer-grid,.form-grid,.profile-modal-grid,.panel-toolbar{grid-template-columns:1fr}
+      .profile-left-panel{border-right:0;padding-right:0;border-bottom:1px solid #e2e8f0;padding-bottom:24px}
       .nav,.desktop-only{display:none}.mobile-toggle{display:inline-flex}
       .container{padding:0 18px}h1{font-size:clamp(2.7rem,14vw,4.2rem)}
-      .hero-container-logged { flex-direction:column-reverse; }
+      .hero-container-logged{flex-direction:column-reverse}
+      .task-item-top,.worker-profile-head{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
@@ -228,8 +242,7 @@
 
   <main>
     <section class="hero">
-      <div class="container" id="heroDynamicContainer">
-        </div>
+      <div class="container" id="heroDynamicContainer"></div>
     </section>
 
     <section class="section alt reveal" id="problema">
@@ -256,13 +269,13 @@
     </section>
 
     <section class="section soft reveal" id="que-es">
-      <div class="container" style="text-align: center;">
+      <div class="container" style="text-align:center;">
         <div class="section-head">
           <h2 class="gradient-text-purple" style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 20px;">Z-Tech: La Plataforma que Conecta Tu Campus</h2>
           <p style="font-size: 1.2rem; max-width: 850px; margin: 0 auto 36px; line-height: 1.7; color: #1e293b;">
             Imagina un lugar donde todos los estudiantes de tu universidad se apoyan mutuamente. <strong style="color: #2563eb;">Z-Tech es esa comunidad.</strong> Un puente digital para que recibas ayuda o generes ingresos, ¡todo dentro del ambiente universitario que ya conoces y confías!
           </p>
-          <a class="btn-cta btn-cta-purple" href="#como-funciona" style="padding: 16px 36px; font-size: 1.05rem; display: inline-flex;">Descubre los Microservicios &rarr;</a>
+          <a class="btn btn-primary" href="#como-funciona" style="padding:16px 36px; font-size:1.05rem; display:inline-flex;">Descubre los Microservicios &rarr;</a>
         </div>
       </div>
     </section>
@@ -270,7 +283,7 @@
     <section class="section alt reveal" id="como-funciona">
       <div class="container">
         <div class="section-head">
-          <h2 style="color: #10b981; font-weight: 800;">La Magia de Z-Tech en 6 Pasos Sencillos</h2>
+          <h2 style="color:#10b981; font-weight:800;">La Magia de Z-Tech en 6 Pasos Sencillos</h2>
           <p>Conectar nunca fue tan fácil. Sigue estos pasos y empieza a ser parte de la comunidad.</p>
         </div>
         <div class="grid-2 steps" id="stepsGrid"></div>
@@ -280,7 +293,7 @@
     <section class="section soft reveal" id="servicios">
       <div class="container">
         <div class="section-head">
-          <h2 class="gradient-text-purple" style="font-weight: 800;">Amplía tus Posibilidades: Descubre Nuestros Servicios</h2>
+          <h2 class="gradient-text-purple" style="font-weight:800;">Amplía tus Posibilidades: Descubre Nuestros Servicios</h2>
           <p>Desde ayuda académica hasta pequeños encargos, Z-Tech tiene lo que necesitas.</p>
         </div>
         <div class="grid-3" id="servicesGrid"></div>
@@ -290,16 +303,16 @@
     <section class="section alt reveal" id="para-quien">
       <div class="container">
         <div class="section-head">
-          <h2 class="gradient-text-green" style="font-weight: 800; font-size: 2.8rem;">Ayuda y Oportunidades para Todos</h2>
+          <h2 class="gradient-text-green" style="font-weight:800; font-size:2.8rem;">Ayuda y Oportunidades para Todos</h2>
         </div>
-        <div class="two-panel">
+        <div class="two-panel grid-2">
           <div class="card" style="background:#eff6ff;">
             <div class="service-badge" style="background:#dbeafe;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <h3>Para quien necesita ayuda</h3>
             <p style="color:#475569;">¿Atascado con un trabajo, necesitas un recado o simplemente no tienes tiempo? Publica tu necesidad en Z-Tech y deja que la comunidad de tu campus te eche una mano. Rápido, seguro y confiable.</p>
-            <button class="btn btn-primary" onclick="openModal('createTaskModalBackdrop')" style="background:#2563eb; padding: 14px 28px;">Publicar una Tarea &rarr;</button>
+            <button class="btn btn-primary" onclick="handleOpenCreateTask()" style="background:#2563eb; padding:14px 28px;">Publicar una Tarea &rarr;</button>
           </div>
           <div class="card" style="background:#fdf4ff;">
             <div class="service-badge" style="background:#fae8ff;">
@@ -307,7 +320,7 @@
             </div>
             <h3>Para quien quiere generar ingresos</h3>
             <p style="color:#475569;">¿Tienes tiempo libre y quieres ganar dinero extra? Ofrece tus habilidades, ayuda a tus compañeros y cobra por tus servicios. Con Z-Tech, el campus se convierte en tu fuente de ingresos flexible y segura.</p>
-            <button class="btn btn-primary" onclick="openAccountModal('config')" style="background:#9333ea; padding: 14px 28px;">Ofrecer mis Servicios &rarr;</button>
+            <button class="btn btn-primary" onclick="handleOfferServices()" style="background:#9333ea; padding:14px 28px;">Ofrecer mis Servicios &rarr;</button>
           </div>
         </div>
       </div>
@@ -315,42 +328,40 @@
 
     <section class="section soft reveal" id="panel-gestion-tareas">
       <div class="container">
-        <div class="section-head" style="text-align: left; max-width: 100%; margin-bottom: 50px;">
-          <h2 class="gradient-text-blue" style="font-weight: 800; font-size: 2.8rem; margin: 0;">Panel de Gestión de Tareas Campus</h2>
-          <p style="font-size: 1.15rem; color:#475569; margin-top: 10px;">Accede rápidamente a tus solicitudes y encuentra oportunidades cerca de ti.</p>
+        <div class="section-head" style="text-align:left; max-width:100%; margin-bottom:50px;">
+          <h2 class="gradient-text-blue" style="font-weight:800; font-size:2.8rem; margin:0;">Panel de Gestión de Tareas Campus</h2>
+          <p style="font-size:1.15rem; color:#475569; margin-top:10px;">Accede rápidamente a tus solicitudes y encuentra oportunidades cerca de ti.</p>
         </div>
 
-        <div class="grid-3" style="grid-template-columns: repeat(3, 1fr); gap: 24px;">
-          
-          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+        <div class="grid-3" style="grid-template-columns:repeat(3, 1fr); gap:24px;">
+          <div class="card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:20px; padding:40px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
             <div style="background:rgba(37,99,235,0.06); color:#2563eb; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:6px 12px; border-radius:999px; position:absolute; top:30px; right:30px;">TAREAS</div>
-            <div class="service-badge" style="background:#eff6ff; margin-bottom: 24px;">
+            <div class="service-badge" style="background:#eff6ff; margin-bottom:24px;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </div>
-            <h3 style="margin: 0 0 12px; font-size: 1.5rem; font-weight: 800; color: #1e293b;">Ver Tareas Publicadas</h3>
-            <p style="margin: 0 0 30px; color: #64748b; font-size: 0.98rem; line-height: 1.6; flex-grow: 1;">Explora todas las microtareas disponibles en tu campus y postúlate como Z-Worker.</p>
-            <button class="btn btn-primary" onclick="handleFeedTareas()" style="background:#2563eb; width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px 24px; border-radius: 12px;">Ver Tablero Campus &rarr;</button>
+            <h3 style="margin:0 0 12px; font-size:1.5rem; font-weight:800; color:#1e293b;">Ver Tareas Publicadas</h3>
+            <p style="margin:0 0 30px; color:#64748b; font-size:0.98rem; line-height:1.6; flex-grow:1;">Explora todas las microtareas disponibles en tu campus y postúlate como Z-Worker.</p>
+            <button class="btn btn-primary" onclick="openCampusTasksPanel()" style="background:#2563eb; width:100%; justify-content:center; font-size:0.9rem; padding:12px 24px; border-radius:12px;">Ver Tablero Campus &rarr;</button>
           </div>
 
-          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div class="card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:20px; padding:40px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
             <div style="background:rgba(147,51,234,0.06); color:#9333ea; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:6px 12px; border-radius:999px; position:absolute; top:30px; right:30px;">PUBLICACIONES</div>
-            <div class="service-badge" style="background:#fdf4ff; margin-bottom: 24px;">
+            <div class="service-badge" style="background:#fdf4ff; margin-bottom:24px;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-            <h3 style="margin: 0 0 12px; font-size: 1.5rem; font-weight: 800; color: #1e293b;">Mis Publicaciones</h3>
-            <p style="margin: 0 0 30px; color: #64748b; font-size: 0.98rem; line-height: 1.6; flex-grow: 1;">Revisa el estado de tus solicitudes de ayuda, gestiona candidatos y califica.</p>
-            <button class="btn btn-secondary" onclick="handleCTARegistro(event)" style="border-radius: 12px; width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px 24px;">Gestionar mis Solicitudes &rarr;</button>
+            <h3 style="margin:0 0 12px; font-size:1.5rem; font-weight:800; color:#1e293b;">Mis Publicaciones</h3>
+            <p style="margin:0 0 30px; color:#64748b; font-size:0.98rem; line-height:1.6; flex-grow:1;">Revisa el estado de tus solicitudes de ayuda, gestiona candidatos y califica.</p>
+            <button class="btn btn-secondary" onclick="openMyPostsPanel()" style="border-radius:12px; width:100%; justify-content:center; font-size:0.9rem; padding:12px 24px;">Gestionar mis Solicitudes &rarr;</button>
           </div>
 
-          <div class="card" style="background:#ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div class="service-badge" style="background:#f0fdf4; margin-bottom: 24px;">
+          <div class="card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:20px; padding:40px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div class="service-badge" style="background:#f0fdf4; margin-bottom:24px;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <h3 style="margin: 0 0 12px; font-size: 1.5rem; font-weight: 800; color: #1e293b;">Mi Ayuda Z</h3>
-            <p style="margin: 0 0 30px; color: #64748b; font-size: 0.98rem; line-height: 1.6; flex-grow: 1;">Consulta las tareas en las que estás ayudando actualmente o tus ganancias.</p>
-            <button class="btn btn-primary" onclick="openAccountModal('profile')" style="background:linear-gradient(135deg, #0d9488, #10b981); width: 100%; justify-content: center; border-radius: 12px; font-size: 0.9rem; padding: 12px 24px; box-shadow:none;">Ver mi Estado &rarr;</button>
+            <h3 style="margin:0 0 12px; font-size:1.5rem; font-weight:800; color:#1e293b;">Mi Ayuda Z</h3>
+            <p style="margin:0 0 30px; color:#64748b; font-size:0.98rem; line-height:1.6; flex-grow:1;">Consulta las tareas en las que estás ayudando actualmente o tus ganancias.</p>
+            <button class="btn btn-primary" onclick="openMyHelpPanel()" style="background:linear-gradient(135deg,#0d9488,#10b981); width:100%; justify-content:center; border-radius:12px; font-size:0.9rem; padding:12px 24px; box-shadow:none;">Ver mi Estado &rarr;</button>
           </div>
-
         </div>
       </div>
     </section>
@@ -358,7 +369,7 @@
     <section class="section soft reveal" id="seguridad">
       <div class="container">
         <div class="section-head">
-          <h2 style="color:#0369a1; font-weight: 800;">Tu Tranquilidad es Nuestra Prioridad</h2>
+          <h2 style="color:#0369a1; font-weight:800;">Tu Tranquilidad es Nuestra Prioridad</h2>
           <p>En Z-Tech, construimos confianza con cada interacción.</p>
         </div>
         <div class="grid-3" id="benefitsGrid"></div>
@@ -368,11 +379,11 @@
     <section class="section alt reveal" id="comparativa">
       <div class="container">
         <div class="section-head">
-          <h2 class="comparison-title" style="font-size: 2.5rem;">¿Grupos de WhatsApp o Z-Tech? <span class="gradient-text-blue-red">La Elección es Clara.</span></h2>
+          <h2 class="comparison-title" style="font-size:2.5rem;">¿Grupos de WhatsApp o Z-Tech? <span class="gradient-text-blue-red">La Elección es Clara.</span></h2>
           <p>Adiós al caos, hola a la eficiencia, la seguridad y la confianza verificada.</p>
         </div>
-        <div class="comparison">
-          <div class="card" style="background:#f8fafc; border:1px solid #3b82f6; box-shadow: 0 10px 30px rgba(59,130,246,0.05);">
+        <div class="comparison grid-2">
+          <div class="card" style="background:#f8fafc; border:1px solid #3b82f6; box-shadow:0 10px 30px rgba(59,130,246,0.05);">
             <h3 style="color:#2563eb; font-size:2rem; margin-bottom:6px; font-weight:800;">Z-Tech</h3>
             <p style="color:#64748b; font-weight:500;">Tu plataforma inteligente y segura.</p>
             <ul>
@@ -409,7 +420,7 @@
       </div>
     </section>
 
-<section class="cta-modern reveal">
+    <section class="cta-modern reveal">
       <div class="container">
         <h2>¿Listo para Revolucionar tu Vida Universitaria?</h2>
         <p>Únete a la comunidad Z-Tech y haz que tu campus trabaje para ti.</p>
@@ -418,10 +429,11 @@
         </button>
       </div>
     </section>
+  </main>
 
   <footer class="footer">
     <div class="container">
-      <div style="display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px;" class="footer-grid">
+      <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px;" class="footer-grid">
         <div>
           <div class="logo" style="margin-bottom:20px;"><img src="Z-TECH.png" alt="Z-Tech" /></div>
           <p style="line-height:1.6; max-width:260px;">Conectando estudiantes, potenciando el campus.</p>
@@ -458,7 +470,7 @@
   <div class="modal-backdrop" id="authModalBackdrop">
     <div class="modal">
       <button class="close" onclick="closeModal('authModalBackdrop')">×</button>
-      
+
       <div class="auth-tabs">
         <button class="auth-tab" id="tabLogin" onclick="switchAuthMode('login')">Iniciar Sesión</button>
         <button class="auth-tab active" id="tabRegister" onclick="switchAuthMode('register')">Registrarse</button>
@@ -467,7 +479,7 @@
       <div id="registerView">
         <h2 style="margin-top:0;text-align:center;font-size:32px" class="gradient-text-blue">¡Únete a Z-Tech!</h2>
         <p class="muted" style="text-align:center;margin-top:8px;margin-bottom:24px;">Regístrate y conecta con tu comunidad universitaria.</p>
-        
+
         <div style="display:flex; justify-content:center; gap:12px; margin-bottom:24px;">
           <button class="btn btn-primary" id="regSolicitanteBtn" onclick="setRegRole('solicitante')">Soy Solicitante</button>
           <button class="btn btn-secondary" id="regWorkerBtn" onclick="setRegRole('z-worker')">Soy Z-Worker</button>
@@ -475,20 +487,28 @@
 
         <form class="form-grid" id="registerForm">
           <div><label>Nombre Completo <span>*</span></label><input class="input" name="fullName" required placeholder="Ej. Nombre"></div>
-            <div><label>Correo Institucional <span>*</span></label><input class="input" name="email" type="email" required placeholder="ej. mi.correo@ucvvirtual.edu.pe"></div>
+          <div><label>Correo Institucional <span>*</span></label><input class="input" name="email" type="email" required placeholder="ej. mi.correo@ucvvirtual.edu.pe"></div>
           <div><label>Contraseña <span>*</span></label><input class="input" name="password" type="password" required></div>
           <div><label>Confirmar Contraseña <span>*</span></label><input class="input" name="confirmPassword" type="password" required></div>
-          
+
           <div>
             <label>Universidad <span>*</span></label>
             <input class="input input-readonly" name="university" value="Universidad César Vallejo (UCV)" readonly>
           </div>
-          
+
           <div><label>Campus o Sede <span>*</span></label><input class="input" name="campus"></div>
           <div><label>Carrera <span>*</span></label><input class="input" name="career"></div>
           <div><label>Ciclo o Semestre <span>*</span></label><input class="input" name="semester"></div>
           <div class="form-full"><label>Celular <span>*</span></label><input class="input" name="phone"></div>
-          
+
+          <div class="form-full">
+            <label>Foto de perfil (opcional)</label>
+            <div class="file-dropzone">
+              <input class="input" type="file" id="registerProfilePhoto" accept="image/*">
+              <div class="attach-list" id="registerProfilePhotoPreview"></div>
+            </div>
+          </div>
+
           <div class="form-full" id="regSkillsWrapper" style="display:none">
             <label>Habilidades o Servicios que puedes ofrecer <span>*</span></label>
             <textarea class="input" name="skills" rows="3" placeholder="Ej. Clases de Cálculo, Edición de videos, Recados urgentes..."></textarea>
@@ -516,17 +536,17 @@
           </div>
         </form>
       </div>
-
     </div>
   </div>
 
   <div class="modal-backdrop" id="createTaskModalBackdrop">
-    <div class="modal" style="width:min(600px, 100%);">
+    <div class="modal" style="width:min(700px, 100%);">
       <button class="close" onclick="closeModal('createTaskModalBackdrop')">×</button>
       <h2 style="margin-top:0; text-align:center; font-size:1.8rem; font-weight:800; color:#4f46e5;">Publica una Nueva Tarea</h2>
       <p class="muted" style="text-align:center; margin-bottom:24px;">¿Necesitas ayuda? Describe tu necesidad y encuentra a tu Z-Worker ideal.</p>
-      
+
       <form class="form-grid" id="createTaskForm">
+        <input type="hidden" name="taskId" id="editTaskIdField">
         <div>
           <label>Título de la Tarea <span>*</span></label>
           <input class="input" name="taskTitle" required placeholder="Ej. Terminar informe de física">
@@ -543,7 +563,7 @@
         </div>
         <div class="form-full">
           <label>Descripción de la Tarea <span>*</span></label>
-          <textarea class="input" name="taskDesc" rows="4" maxlength="300" required placeholder="Describe en detalle lo que necesitas (ej. ayudarme con proyecto de estadística, recoger material de la biblioteca...). Max 300 caracteres."></textarea>
+          <textarea class="input" name="taskDesc" rows="4" maxlength="300" required placeholder="Describe en detalle lo que necesitas."></textarea>
         </div>
         <div>
           <label>Urgencia</label>
@@ -561,20 +581,38 @@
           <label>Pago Estimado (S/.) <span>*</span></label>
           <input class="input" name="taskPayment" type="number" step="0.01" required placeholder="Monto ideal por la tarea (ej. 15.00)">
         </div>
+
+        <div class="form-full">
+          <label>Adjuntar imágenes o archivos (opcional)</label>
+          <div class="file-dropzone">
+            <input class="input" type="file" id="taskAttachmentsInput" multiple accept="image/*,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.rar,.txt">
+            <div class="attach-list" id="taskAttachmentsPreview"></div>
+            <p class="info-note" style="margin-top:10px;">Puedes subir imágenes o archivos de apoyo para que el Z-Worker entienda mejor la tarea.</p>
+          </div>
+        </div>
+
         <div class="form-full" style="text-align:center; margin-top:16px;">
-          <button class="btn btn-primary" type="submit" style="padding:14px 40px; background:linear-gradient(135deg, #2563eb, #7c3aed);">Publicar Tarea</button>
+          <button class="btn btn-primary" id="createTaskSubmitBtn" type="submit" style="padding:14px 40px; background:linear-gradient(135deg, #2563eb, #7c3aed);">Publicar Tarea</button>
         </div>
       </form>
     </div>
   </div>
 
   <div class="modal-backdrop" id="ofrecerServiciosModalBackdrop">
-    <div class="modal" style="width:min(600px, 100%);">
+    <div class="modal" style="width:min(700px, 100%);">
       <button class="close" onclick="closeModal('ofrecerServiciosModalBackdrop')">×</button>
       <h2 style="margin-top:0; text-align:center; font-size:1.8rem; font-weight:800; color:#7c3aed;">Ofrece tus Servicios Z-Worker</h2>
       <p class="muted" style="text-align:center; margin-bottom:24px;">Configura tu perfil para empezar a ganar dinero y ayudar a tus compañeros.</p>
-      
+
       <form class="form-grid" id="ofrecerServiciosForm">
+        <div class="form-full">
+          <label>Foto de perfil Z-Worker (opcional)</label>
+          <div class="file-dropzone">
+            <input class="input" type="file" id="workerProfilePhotoInput" accept="image/*">
+            <div class="attach-list" id="workerProfilePhotoPreview"></div>
+          </div>
+        </div>
+
         <div class="form-full">
           <label>Tus Habilidades o Servicios <span>*</span></label>
           <textarea class="input" name="osSkills" rows="3" required placeholder="Calculo"></textarea>
@@ -603,9 +641,9 @@
   </div>
 
   <div class="modal-backdrop" id="accountModalBackdrop">
-    <div class="modal" style="width:min(850px, 100%);">
+    <div class="modal" style="width:min(900px, 100%);">
       <button class="close" onclick="closeModal('accountModalBackdrop')">×</button>
-      
+
       <div class="profile-modal-grid">
         <div class="profile-left-panel">
           <div class="user-avatar-big" id="profBigAvatar">ZT</div>
@@ -619,7 +657,7 @@
 
         <div id="profileDetailsView">
           <h2 style="margin-top:0; font-size:1.6rem; font-weight:800; color:#4f46e5;" id="accountModalTitle">Detalles de la Cuenta</h2>
-          
+
           <div class="profile-fields-display" id="profileReadOnlyFields">
             <div class="profile-field-item"><label>Correo Institucional</label><div class="val" id="vfEmail">-</div></div>
             <div class="profile-field-item"><label>Celular</label><div class="val" id="vfPhone">-</div></div>
@@ -627,7 +665,7 @@
             <div class="profile-field-item"><label>Campus o Sede</label><div class="val" id="vfCampus">-</div></div>
             <div class="profile-field-item"><label>Carrera</label><div class="val" id="vfCareer">-</div></div>
             <div class="profile-field-item"><label>Ciclo o Semestre</label><div class="val" id="vfSemester">-</div></div>
-            <div class="form-full profile-field-item" style="grid-column: 1 / -1;"><label>Habilidades / Servicios registrados</label><div class="val" id="vfSkills" style="font-weight:500; color:#475569;">-</div></div>
+            <div class="form-full profile-field-item" style="grid-column:1 / -1;"><label>Habilidades / Servicios registrados</label><div class="val" id="vfSkills" style="font-weight:500; color:#475569;">-</div></div>
           </div>
 
           <form id="profileEditForm" style="display:none;" class="form-grid">
@@ -635,6 +673,13 @@
             <div><label>Campus o Sede</label><input class="input" name="editCampus" id="efCampus" required></div>
             <div><label>Carrera</label><input class="input" name="editCareer" id="efCareer" required></div>
             <div><label>Ciclo o Semestre</label><input class="input" name="editSemester" id="efSemester" required></div>
+            <div class="form-full">
+              <label>Foto de perfil</label>
+              <div class="file-dropzone">
+                <input class="input" type="file" id="configProfilePhotoInput" accept="image/*">
+                <div class="attach-list" id="configProfilePhotoPreview"></div>
+              </div>
+            </div>
             <div class="form-full"><label>Habilidades o Servicios Z-Worker</label><textarea class="input" name="editSkills" id="efSkills" rows="3" placeholder="Escribe tus habilidades para activar el modo Z-Worker..."></textarea></div>
             <div class="form-full" style="text-align:right; margin-top:10px;">
               <button class="btn btn-primary" type="submit" style="background:#10b981;">Guardar Cambios</button>
@@ -650,7 +695,7 @@
       <button class="close" onclick="closeModal('rolesModalBackdrop')">×</button>
       <h2 style="margin-top:0; text-align:center; font-size:1.6rem; font-weight:800; color:#4f46e5;">Gestiona tus Roles</h2>
       <p class="muted" style="text-align:center; margin-bottom:24px;">Activa o cambia entre tus modos de uso de Z-Tech.</p>
-      
+
       <div style="display:flex; justify-content:center; gap:8px; margin-bottom:20px;">
         <span class="role-badge-pill primary">Solicitante Principal</span>
         <span class="role-badge-pill secondary">Z-Worker Secundario</span>
@@ -681,12 +726,25 @@
     </div>
   </div>
 
+  <div class="modal-backdrop" id="campusPanelModalBackdrop">
+    <div class="modal" style="width:min(1000px,100%);">
+      <button class="close" onclick="closeModal('campusPanelModalBackdrop')">×</button>
+      <div id="campusPanelContent"></div>
+    </div>
+  </div>
+
   <script>
-    // CORRECCIÓN: Almacén de base de datos local para persistencia real de perfiles
     const userDatabase = {};
-    let currentUser = null; 
-    let activeRegRole = 'solicitante'; 
-    let currentAuthMode = 'register'; 
+    const taskDatabase = [];
+    let currentUser = null;
+    let activeRegRole = 'solicitante';
+    let currentAuthMode = 'register';
+    let editingTaskId = null;
+    let pendingTaskAttachments = [];
+    let pendingDeliveryAttachments = [];
+    let pendingRegisterProfilePhoto = null;
+    let pendingWorkerProfilePhoto = null;
+    let pendingConfigProfilePhoto = null;
 
     const steps = [
       ['Regístrate con tu correo institucional', 'Verificación sencilla para una comunidad segura y de confianza.', `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2f63e7" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`],
@@ -726,28 +784,28 @@
     const qs = s => document.querySelector(s);
     const qsa = s => Array.from(document.querySelectorAll(s));
 
-    function openModal(id) {
+    function openModal(id){
       const el = qs('#' + id);
       if(!el) return;
       el.style.display = 'flex';
       setTimeout(() => el.classList.add('show'), 10);
     }
 
-    function closeModal(id) {
+    function closeModal(id){
       const el = qs('#' + id);
       if(!el) return;
       el.classList.remove('show');
       setTimeout(() => el.style.display = 'none', 300);
     }
 
-    function switchAuthMode(mode) {
+    function switchAuthMode(mode){
       currentAuthMode = mode;
-      if(mode === 'register') {
+      if(mode === 'register'){
         qs('#tabRegister').classList.add('active');
         qs('#tabLogin').classList.remove('active');
         qs('#registerView').style.display = 'block';
         qs('#loginView').style.display = 'none';
-      } else {
+      }else{
         qs('#tabRegister').classList.remove('active');
         qs('#tabLogin').classList.add('active');
         qs('#registerView').style.display = 'none';
@@ -755,23 +813,208 @@
       }
     }
 
-    function setRegRole(role) {
+    function setRegRole(role){
       activeRegRole = role;
-      if(role === 'z-worker') {
+      if(role === 'z-worker'){
         qs('#regWorkerBtn').className = 'btn btn-primary';
         qs('#regSolicitanteBtn').className = 'btn btn-secondary';
         qs('#regSkillsWrapper').style.display = 'block';
-      } else {
+      }else{
         qs('#regWorkerBtn').className = 'btn btn-secondary';
         qs('#regSolicitanteBtn').className = 'btn btn-primary';
         qs('#regSkillsWrapper').style.display = 'none';
       }
     }
 
-    function renderHero() {
+    function requireLogin(callback = null){
+      if(!currentUser){
+        openModal('authModalBackdrop');
+        switchAuthMode('login');
+        return false;
+      }
+      if(callback) callback();
+      return true;
+    }
+
+    function handleOpenCreateTask(){
+      if(!requireLogin()) return;
+      resetTaskForm();
+      openModal('createTaskModalBackdrop');
+    }
+
+    function handleOfferServices(){
+      if(!requireLogin()) return;
+      fillWorkerServiceForm();
+      openModal('ofrecerServiciosModalBackdrop');
+    }
+
+    function normalizeMoney(value){
+      return Number(value || 0);
+    }
+
+    function formatDate(dateStr){
+      if(!dateStr) return '-';
+      const d = new Date(dateStr);
+      return d.toLocaleString('es-PE', {
+        year:'numeric',
+        month:'2-digit',
+        day:'2-digit',
+        hour:'2-digit',
+        minute:'2-digit'
+      });
+    }
+
+    function formatFileSize(bytes){
+      if(!bytes) return '0 KB';
+      const sizes = ['B','KB','MB','GB'];
+      const i = Math.floor(Math.log(bytes)/Math.log(1024));
+      return `${(bytes/Math.pow(1024,i)).toFixed(i === 0 ? 0 : 1)} ${sizes[i]}`;
+    }
+
+    function escapeHtml(str = ''){
+      return String(str)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#039;');
+    }
+
+    function isImageFile(type = '', name = ''){
+      return type.startsWith('image/') || /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i.test(name);
+    }
+
+    function cloneAttachment(file){
+      return {
+        id:'att_' + Date.now() + '_' + Math.random().toString(36).slice(2,8),
+        name:file.name,
+        size:file.size,
+        type:file.type || '',
+        url:URL.createObjectURL(file)
+      };
+    }
+
+    function cloneSingleImage(file){
+      if(!file) return null;
+      return {
+        id:'img_' + Date.now() + '_' + Math.random().toString(36).slice(2,8),
+        name:file.name,
+        size:file.size,
+        type:file.type || '',
+        url:URL.createObjectURL(file)
+      };
+    }
+
+    function getInitials(name = ''){
+      return name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase() || 'ZT';
+    }
+
+    function renderAvatar(user, size = 'big'){
+      const initials = getInitials(user?.fullName || 'ZT');
+      if(user?.profilePhoto?.url){
+        return `<img src="${user.profilePhoto.url}" alt="${escapeHtml(user.fullName || 'Usuario')}">`;
+      }
+      return initials;
+    }
+
+    function renderSingleImagePreview(fileObj, targetId, removeFnName = ''){
+      const box = qs(targetId);
+      if(!box) return;
+      if(!fileObj){
+        box.innerHTML = '';
+        return;
+      }
+      box.innerHTML = `
+        <div class="attach-item">
+          <div class="attach-preview">
+            <img src="${fileObj.url}" alt="${escapeHtml(fileObj.name)}" class="attach-thumb">
+            <div style="min-width:0;">
+              <div class="attach-name">${escapeHtml(fileObj.name)}</div>
+              <div class="attach-meta">${formatFileSize(fileObj.size)}</div>
+            </div>
+          </div>
+          ${removeFnName ? `<button type="button" class="mini-btn red" onclick="${removeFnName}()">Quitar</button>` : ''}
+        </div>
+      `;
+    }
+
+    function renderAttachmentPreview(list, targetId, removable = true, onRemove = ''){
+      const box = qs(targetId);
+      if(!box) return;
+      if(!list.length){
+        box.innerHTML = '';
+        return;
+      }
+      box.innerHTML = list.map((file, index) => `
+        <div class="attach-item">
+          <div class="attach-preview">
+            ${isImageFile(file.type, file.name)
+              ? `<img src="${file.url}" alt="${escapeHtml(file.name)}" class="attach-thumb">`
+              : `<div class="attach-thumb" style="display:grid;place-items:center;color:#475569;font-weight:800;">FILE</div>`
+            }
+            <div style="min-width:0;">
+              <div class="attach-name">${escapeHtml(file.name)}</div>
+              <div class="attach-meta">${formatFileSize(file.size)}</div>
+            </div>
+          </div>
+          ${removable ? `<button type="button" class="mini-btn red" onclick="${onRemove}(${index})">Quitar</button>` : ''}
+        </div>
+      `).join('');
+    }
+
+    function removeRegisterProfilePhoto(){
+      pendingRegisterProfilePhoto = null;
+      qs('#registerProfilePhoto').value = '';
+      renderSingleImagePreview(null, '#registerProfilePhotoPreview');
+    }
+
+    function removeWorkerProfilePhoto(){
+      pendingWorkerProfilePhoto = null;
+      qs('#workerProfilePhotoInput').value = '';
+      renderSingleImagePreview(null, '#workerProfilePhotoPreview');
+    }
+
+    function removeConfigProfilePhoto(){
+      pendingConfigProfilePhoto = null;
+      qs('#configProfilePhotoInput').value = '';
+      renderSingleImagePreview(null, '#configProfilePhotoPreview');
+    }
+
+    function resetTaskForm(){
+      editingTaskId = null;
+      pendingTaskAttachments = [];
+      qs('#createTaskForm').reset();
+      qs('#editTaskIdField').value = '';
+      qs('#createTaskSubmitBtn').textContent = 'Publicar Tarea';
+      qs('#taskAttachmentsInput').value = '';
+      renderAttachmentPreview(pendingTaskAttachments, '#taskAttachmentsPreview', true, 'removePendingTaskAttachment');
+    }
+
+    function removePendingTaskAttachment(index){
+      pendingTaskAttachments.splice(index, 1);
+      renderAttachmentPreview(pendingTaskAttachments, '#taskAttachmentsPreview', true, 'removePendingTaskAttachment');
+    }
+
+    function removePendingDeliveryAttachment(index){
+      pendingDeliveryAttachments.splice(index, 1);
+      renderAttachmentPreview(pendingDeliveryAttachments, '#deliveryAttachmentsPreview', true, 'removePendingDeliveryAttachment');
+    }
+
+    function fillWorkerServiceForm(){
+      if(!currentUser) return;
+      qs('#ofrecerServiciosForm textarea[name="osSkills"]').value = currentUser.skills || '';
+      qs('#ofrecerServiciosForm input[name="osAvailability"]').value = currentUser.workerAvailability || '';
+      qs('#ofrecerServiciosForm input[name="osTypes"]').value = currentUser.workerTypes || '';
+      qs('#ofrecerServiciosForm input[name="osPayment"]').value = currentUser.workerPayment || '';
+      qs('#ofrecerServiciosForm textarea[name="osDesc"]').value = currentUser.workerDescription || '';
+      pendingWorkerProfilePhoto = currentUser.profilePhoto || null;
+      renderSingleImagePreview(pendingWorkerProfilePhoto, '#workerProfilePhotoPreview', 'removeWorkerProfilePhoto');
+    }
+
+    function renderHero(){
       const container = qs('#heroDynamicContainer');
-      if(!currentUser) {
-        container.className = "hero-grid";
+      if(!currentUser){
+        container.className = 'hero-grid';
         container.innerHTML = `
           <div class="hero-copy">
             <h1>Tu Campus, Tus Soluciones, Tu Dinero Extra</h1>
@@ -796,80 +1039,69 @@
           </div>
         `;
       } else {
-        container.className = "hero-container-logged";
-        const initials = (currentUser.fullName.split(" ").map(n => n[0]).join("").substring(0,2)).toUpperCase();
-        
+        container.className = 'hero-container-logged';
+        const initials = getInitials(currentUser.fullName);
+
         let actionButtonsHtml = '';
-        if(currentUser.mode === 'z-worker') {
+        if(currentUser.mode === 'z-worker'){
           actionButtonsHtml = `
-            <button class="btn btn-primary" onclick="openModal('createTaskModalBackdrop')" style="background:linear-gradient(135deg, #2563eb, #7c3aed);">
+            <button class="btn btn-primary" onclick="handleOpenCreateTask()" style="background:linear-gradient(135deg, #2563eb, #7c3aed);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               Crear Nueva Tarea
             </button>
-            <button class="btn btn-secondary" onclick="openModal('ofrecerServiciosModalBackdrop')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> 
+            <button class="btn btn-secondary" onclick="handleOfferServices()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
               Ofrecer mis Servicios
             </button>
           `;
         } else {
           actionButtonsHtml = `
-            <button class="btn btn-primary" onclick="openModal('createTaskModalBackdrop')" style="background:linear-gradient(135deg, #2563eb, #7c3aed);">
+            <button class="btn btn-primary" onclick="handleOpenCreateTask()" style="background:linear-gradient(135deg, #2563eb, #7c3aed);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               Crear Nueva Tarea
             </button>
-            <button class="btn btn-secondary" onclick="openRolesModal()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 2.1l4 4-4 4M3 22l4-4-4-4M21 22l-4-4 4-4M3 2.1l4 4-4 4"/></svg> 
-              Activar Modo Z-Worker
+            <button class="btn btn-secondary" onclick="handleOfferServices()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 2.1l4 4-4 4M3 22l4-4-4-4M21 22l-4-4 4-4M3 2.1l4 4-4 4"/></svg>
+              Ofrecer mis Servicios
             </button>
           `;
         }
 
         container.innerHTML = `
-          <div class="hero-copy" style="max-width: 650px;">
-            <h1 style="font-size: clamp(2.5rem, 6vw, 4.8rem);">Tu Campus, Tus Soluciones, Tu Dinero Extra</h1>
-            <p class="lead">Conecta con estudiantes de tu campus para tareas rápidas, encargos y apoyo académico. ¡Ayuda y gana dinero, fácil y seguro!</p>
-            <div style="margin-top: 32px; display:flex; gap:16px; flex-wrap:wrap;">
+          <div class="hero-copy">
+            <h1>Bienvenido, ${escapeHtml(currentUser.fullName.split(' ')[0])}</h1>
+            <p class="lead">Gestiona tus tareas, encuentra oportunidades en tu campus y conecta con estudiantes verificados desde un solo lugar.</p>
+            <div class="actions hero-actions" style="margin-top:34px;flex-wrap:wrap">
               ${actionButtonsHtml}
             </div>
           </div>
-          
-          <div class="user-welcome-card">
-            <h2>Bienvenid@, ${currentUser.fullName.split(" ")[0]}</h2>
-            <div class="user-avatar-big">${initials}</div>
-            <div class="role-badge-row">
-              <span class="role-badge-pill primary">Solicitante Principal</span>
-              <span class="role-badge-pill secondary">Z-Worker Secundario</span>
+          <div class="hero-card">
+            <div class="phone">
+              <div class="phone-screen">
+                <div class="phone-title">Tu Actividad en Z-Tech</div>
+                <div class="task-list">
+                  <div class="task-card"><div class="task-dot blue">1</div><div class="task-text">Publica tareas con imágenes y archivos</div></div>
+                  <div class="task-card"><div class="task-dot purple">2</div><div class="task-text">Activa y mejora tu perfil Z-Worker</div></div>
+                  <div class="task-card"><div class="task-dot green">3</div><div class="task-text">Acepta, entrega o cancela tareas fácilmente</div></div>
+                </div>
+                <div class="phone-fab">${currentUser.profilePhoto?.url ? '✓' : initials[0] || 'Z'}</div>
+              </div>
             </div>
-            <div class="current-mode-status" style="background: ${currentUser.mode === 'z-worker' ? 'var(--purple)' : 'var(--blue)'};">
-              Modo Actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}
-            </div>
-            
-            <div class="user-info-list">
-              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> ${currentUser.email}</div>
-              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Universidad César Vallejo (UCV)</div>
-              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg> ${currentUser.campus.toUpperCase()}</div>
-              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2.7 3 6 3s6-1 6-3v-5"/></svg> ${currentUser.career.toUpperCase()} (${currentUser.semester.toUpperCase()})</div>
-              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> ${currentUser.phone}</div>
-              <div class="user-info-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Miembro desde: 18 de junio de 2026</div>
-            </div>
-            
-            <button class="btn btn-primary" onclick="openAccountModal('profile')" style="background: linear-gradient(135deg, #2563eb, #7c3aed); width:100%; font-size:0.95rem;">Explorar mi Perfil Z-Tech &rarr;</button>
           </div>
         `;
       }
     }
 
-    function renderHeaderActions() {
+    function renderHeaderActions(){
       const container = qs('#headerActions');
-      if(!currentUser) {
+      if(!currentUser){
         container.innerHTML = `<button class="btn btn-primary" onclick="openModal('authModalBackdrop'); switchAuthMode('register');">Regístrate Ahora</button>`;
-      } else {
-        const initials = (currentUser.fullName.split(" ").map(n => n[0]).join("").substring(0,2)).toUpperCase();
+      }else{
         container.innerHTML = `
           <div style="position:relative;">
             <button class="user-chip" id="userChipBtn" onclick="toggleDropdown(event)">
-              <span class="avatar-sm">${initials}</span>
-              <span>Hola, ${currentUser.fullName.split(" ")[0]}</span>
+              <span class="avatar-sm">${renderAvatar(currentUser, 'small')}</span>
+              <span>Hola, ${escapeHtml(currentUser.fullName.split(' ')[0])}</span>
               <span style="font-size:10px; margin-left:4px;">&#9662;</span>
             </button>
             <div class="user-dropdown" id="headerUserDropdown">
@@ -896,93 +1128,619 @@
       }
     }
 
-    function toggleDropdown(e) {
+    function toggleDropdown(e){
       e.stopPropagation();
-      qs('#headerUserDropdown').classList.toggle('show');
+      qs('#headerUserDropdown')?.classList.toggle('show');
     }
 
-    function openAccountModal(tab) {
-      if(!currentUser) {
+    function openAccountModal(tab){
+      if(!currentUser){
         openModal('authModalBackdrop');
         switchAuthMode('login');
         return;
       }
       openModal('accountModalBackdrop');
-      
-      const initials = (currentUser.fullName.split(" ").map(n => n[0]).join("").substring(0,2)).toUpperCase();
-      qs('#profBigAvatar').textContent = initials;
+
+      qs('#profBigAvatar').innerHTML = renderAvatar(currentUser, 'big');
       qs('#profBigName').textContent = currentUser.fullName;
       qs('#profModeStatus').textContent = `Modo Actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}`;
       qs('#profModeStatus').style.background = currentUser.mode === 'z-worker' ? 'var(--purple)' : 'var(--blue)';
 
-      if(tab === 'profile') {
-        qs('#accountModalTitle').textContent = "Detalles de la Cuenta";
+      if(tab === 'profile'){
+        qs('#accountModalTitle').textContent = 'Detalles de la Cuenta';
         qs('#profileReadOnlyFields').style.display = 'grid';
         qs('#profileEditForm').style.display = 'none';
-        
+
         qs('#vfEmail').textContent = currentUser.email;
         qs('#vfPhone').textContent = currentUser.phone;
-        qs('#vfUni').textContent = "Universidad César Vallejo (UCV)";
-        qs('#vfCampus').textContent = currentUser.campus.toUpperCase();
-        qs('#vfCareer').textContent = currentUser.career.toUpperCase();
-        qs('#vfSemester').textContent = currentUser.semester.toUpperCase();
+        qs('#vfUni').textContent = 'Universidad César Vallejo (UCV)';
+        qs('#vfCampus').textContent = (currentUser.campus || '-').toUpperCase();
+        qs('#vfCareer').textContent = (currentUser.career || '-').toUpperCase();
+        qs('#vfSemester').textContent = (currentUser.semester || '-').toUpperCase();
         qs('#vfSkills').textContent = currentUser.skills ? currentUser.skills : 'Ninguna habilidad registrada aún.';
-      } else {
-        qs('#accountModalTitle').textContent = "Configuración del Perfil";
+      }else{
+        qs('#accountModalTitle').textContent = 'Configuración del Perfil';
         qs('#profileReadOnlyFields').style.display = 'none';
         qs('#profileEditForm').style.display = 'grid';
 
-        qs('#efPhone').value = currentUser.phone;
-        qs('#efCampus').value = currentUser.campus;
-        qs('#efCareer').value = currentUser.career;
-        qs('#efSemester').value = currentUser.semester;
+        qs('#efPhone').value = currentUser.phone || '';
+        qs('#efCampus').value = currentUser.campus || '';
+        qs('#efCareer').value = currentUser.career || '';
+        qs('#efSemester').value = currentUser.semester || '';
         qs('#efSkills').value = currentUser.skills || '';
+        pendingConfigProfilePhoto = currentUser.profilePhoto || null;
+        renderSingleImagePreview(pendingConfigProfilePhoto, '#configProfilePhotoPreview', 'removeConfigProfilePhoto');
       }
     }
 
-    function openRolesModal() {
+    function openRolesModal(){
       if(!currentUser) return;
       openModal('rolesModalBackdrop');
-      
+
       qs('#roleModalCurrentModeBadge').textContent = `Modo Actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}`;
       qs('#roleModalCurrentModeBadge').style.background = currentUser.mode === 'z-worker' ? 'var(--purple)' : 'var(--blue)';
 
       const hasSkills = currentUser.skills && currentUser.skills.trim().length > 0;
       const workerBtn = qs('#switchModeWorkerBtn');
 
-      if(!hasSkills) {
+      if(!hasSkills){
         qs('#zWorkerActivationBox').style.borderColor = 'var(--red)';
         qs('#zWorkerNoticeText').innerHTML = 'Para poder activar el modo Z-Worker y generar ingresos, primero debes registrar tus <strong>Habilidades</strong> en Configuración.';
         workerBtn.classList.add('btn-disabled');
         workerBtn.disabled = true;
-      } else {
+      }else{
         qs('#zWorkerActivationBox').style.borderColor = 'var(--green)';
-        qs('#zWorkerNoticeText').innerHTML = `Habilidades actuales: <span style="color:var(--purple); font-weight:600;">${currentUser.skills}</span><br><span style="color:var(--green); font-weight:700;">&check; ¡Modo listo para usar!</span>`;
+        qs('#zWorkerNoticeText').innerHTML = `Habilidades actuales: <span style="color:var(--purple); font-weight:600;">${escapeHtml(currentUser.skills)}</span><br><span style="color:var(--green); font-weight:700;">&check; ¡Modo listo para usar!</span>`;
         workerBtn.classList.remove('btn-disabled');
         workerBtn.disabled = false;
       }
     }
 
-    function executeModeChange(targetMode) {
+    function executeModeChange(targetMode){
       if(!currentUser) return;
-      if(targetMode === 'z-worker' && (!currentUser.skills || currentUser.skills.trim().length === 0)) {
-        alert("No puedes cambiar a modo Z-Worker sin añadir habilidades primero en Configuración.");
+      if(targetMode === 'z-worker' && (!currentUser.skills || currentUser.skills.trim().length === 0)){
+        alert('No puedes cambiar a modo Z-Worker sin añadir habilidades primero en Configuración.');
         return;
       }
       currentUser.mode = targetMode;
+      userDatabase[currentUser.email] = currentUser;
       closeModal('rolesModalBackdrop');
       renderHero();
       renderHeaderActions();
     }
 
-    function logoutUser() {
+    function logoutUser(){
       currentUser = null;
       renderHero();
       renderHeaderActions();
     }
 
+    function openCampusTasksPanel(){
+      if(!requireLogin()) return;
+      renderCampusTasksPanel();
+      openModal('campusPanelModalBackdrop');
+    }
+
+    function openMyPostsPanel(){
+      if(!requireLogin()) return;
+      renderMyPostsPanel();
+      openModal('campusPanelModalBackdrop');
+    }
+
+    function openMyHelpPanel(){
+      if(!requireLogin()) return;
+      renderMyHelpPanel();
+      openModal('campusPanelModalBackdrop');
+    }
+
+    function renderTaskAttachments(task){
+      if(!task.attachments || !task.attachments.length){
+        return `<div class="info-note">Sin archivos adjuntos.</div>`;
+      }
+
+      return `
+        <div class="attach-list">
+          ${task.attachments.map(file => `
+            <div class="attach-item">
+              <div class="attach-preview">
+                ${isImageFile(file.type, file.name)
+                  ? `<img src="${file.url}" alt="${escapeHtml(file.name)}" class="attach-thumb">`
+                  : `<div class="attach-thumb" style="display:grid;place-items:center;color:#475569;font-weight:800;">FILE</div>`
+                }
+                <div style="min-width:0;">
+                  <div class="attach-name">${escapeHtml(file.name)}</div>
+                  <div class="attach-meta">${formatFileSize(file.size)}</div>
+                </div>
+              </div>
+              <a class="mini-btn blue" href="${file.url}" download="${escapeHtml(file.name)}" style="text-decoration:none;">Descargar</a>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderDeliveryAttachments(delivery){
+      if(!delivery || !delivery.attachments || !delivery.attachments.length){
+        return `<div class="info-note">Sin archivos adjuntos en la entrega.</div>`;
+      }
+
+      return `
+        <div class="attach-list">
+          ${delivery.attachments.map(file => `
+            <div class="attach-item">
+              <div class="attach-preview">
+                ${isImageFile(file.type, file.name)
+                  ? `<img src="${file.url}" alt="${escapeHtml(file.name)}" class="attach-thumb">`
+                  : `<div class="attach-thumb" style="display:grid;place-items:center;color:#475569;font-weight:800;">FILE</div>`
+                }
+                <div style="min-width:0;">
+                  <div class="attach-name">${escapeHtml(file.name)}</div>
+                  <div class="attach-meta">${formatFileSize(file.size)}</div>
+                </div>
+              </div>
+              <a class="mini-btn blue" href="${file.url}" download="${escapeHtml(file.name)}" style="text-decoration:none;">Descargar</a>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderWorkerProfile(task){
+      if(!task.assignedWorkerEmail || !userDatabase[task.assignedWorkerEmail]){
+        return `<div class="info-note">Todavía no hay un Z-Worker asignado a esta tarea.</div>`;
+      }
+
+      const worker = userDatabase[task.assignedWorkerEmail];
+      return `
+        <div class="worker-profile-card">
+          <div class="worker-profile-head">
+            <div class="worker-profile-avatar">${renderAvatar(worker)}</div>
+            <div>
+              <h3 style="margin:0 0 6px; font-size:1.1rem; color:#1e293b;">${escapeHtml(worker.fullName)}</h3>
+              <div class="task-meta" style="margin:0;">
+                <span class="meta-pill meta-purple">Z-Worker</span>
+                <span class="meta-pill meta-blue">${escapeHtml(worker.campus || 'Sin campus')}</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid; gap:8px; color:#475569; font-size:.92rem;">
+            <div><strong>Correo:</strong> ${escapeHtml(worker.email)}</div>
+            <div><strong>Celular:</strong> ${escapeHtml(worker.phone || '-')}</div>
+            <div><strong>Carrera:</strong> ${escapeHtml(worker.career || '-')}</div>
+            <div><strong>Semestre:</strong> ${escapeHtml(worker.semester || '-')}</div>
+            <div><strong>Habilidades:</strong> ${worker.skills ? escapeHtml(worker.skills) : 'Sin habilidades registradas.'}</div>
+            <div><strong>Disponibilidad:</strong> ${worker.workerAvailability ? escapeHtml(worker.workerAvailability) : 'No registrada'}</div>
+            <div><strong>Tipo de servicios:</strong> ${worker.workerTypes ? escapeHtml(worker.workerTypes) : 'No registrado'}</div>
+            <div><strong>Rango de pago:</strong> ${worker.workerPayment ? escapeHtml(worker.workerPayment) : 'No registrado'}</div>
+            <div><strong>Descripción:</strong> ${worker.workerDescription ? escapeHtml(worker.workerDescription) : 'Sin descripción.'}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCampusTasksPanel(){
+      const content = qs('#campusPanelContent');
+      content.innerHTML = `
+        <h2 class="panel-section-title">Tareas publicadas</h2>
+        <p class="panel-section-subtitle">Busca tareas del campus, filtra por pago y revisa cuáles están disponibles.</p>
+
+        <div class="panel-toolbar">
+          <input class="input" id="taskSearchInput" placeholder="Buscar por título, categoría o ubicación">
+          <input class="input" id="taskMinPrice" type="number" placeholder="Pago mínimo">
+          <input class="input" id="taskMaxPrice" type="number" placeholder="Pago máximo">
+        </div>
+
+        <div id="campusTasksResults" class="panel-list"></div>
+      `;
+
+      ['#taskSearchInput', '#taskMinPrice', '#taskMaxPrice'].forEach(sel => {
+        qs(sel).addEventListener('input', applyCampusTaskFilters);
+      });
+
+      applyCampusTaskFilters();
+    }
+
+    function applyCampusTaskFilters(){
+      const term = qs('#taskSearchInput')?.value?.trim().toLowerCase() || '';
+      const min = normalizeMoney(qs('#taskMinPrice')?.value);
+      const maxRaw = qs('#taskMaxPrice')?.value;
+      const max = maxRaw === '' ? Infinity : normalizeMoney(maxRaw);
+
+      const filtered = taskDatabase.filter(task => {
+        const text = `${task.title} ${task.category} ${task.location} ${task.description}`.toLowerCase();
+        const matchesText = text.includes(term);
+        const payment = normalizeMoney(task.payment);
+        const matchesMoney = payment >= min && payment <= max;
+        return matchesText && matchesMoney;
+      });
+
+      const box = qs('#campusTasksResults');
+
+      if(!filtered.length){
+        box.innerHTML = `<div class="empty-box">No hay tareas que coincidan con tu búsqueda por el momento.</div>`;
+        return;
+      }
+
+      box.innerHTML = filtered.map(task => {
+        const isAvailable = task.status === 'disponible';
+        const isOwner = currentUser && task.ownerEmail === currentUser.email;
+        const isWorker = currentUser && currentUser.mode === 'z-worker';
+
+        let actionHtml = `<button class="mini-btn gray">Solo lectura</button>`;
+
+        if(!currentUser){
+          actionHtml = `<button class="mini-btn blue" onclick="openModal('authModalBackdrop'); switchAuthMode('login');">Inicia sesión</button>`;
+        } else if(isOwner){
+          actionHtml = `<button class="mini-btn gray">Es tu publicación</button>`;
+        } else if(!isWorker){
+          actionHtml = `<button class="mini-btn gray" onclick="alert('Solo los usuarios registrados como Z-Worker pueden aceptar tareas. Cambia tu cuenta desde Cambiar Modo o Configuración.')">No disponible para tu cuenta</button>`;
+        } else if(isAvailable){
+          actionHtml = `<button class="mini-btn blue" onclick="acceptTask('${task.id}')">Aceptar tarea</button>`;
+        } else {
+          actionHtml = `<button class="mini-btn gray">No disponible</button>`;
+        }
+
+        return `
+          <div class="task-item">
+            <div class="task-item-top">
+              <div>
+                <h3 style="margin:0 0 8px; font-size:1.2rem; font-weight:800; color:#1e293b;">${escapeHtml(task.title)}</h3>
+                <p style="margin:0; color:#64748b;">${escapeHtml(task.description)}</p>
+              </div>
+              <div style="min-width:180px; text-align:right;">
+                <div style="font-weight:800; font-size:1.2rem; color:#0f172a;">S/ ${Number(task.payment).toFixed(2)}</div>
+                <div style="font-size:.85rem; color:#64748b;">${formatDate(task.createdAt)}</div>
+              </div>
+            </div>
+
+            <div class="task-meta">
+              <span class="meta-pill meta-blue">${escapeHtml(task.category)}</span>
+              <span class="meta-pill meta-purple">${escapeHtml(task.location)}</span>
+              <span class="meta-pill ${isAvailable ? 'meta-green' : task.status === 'entregada' ? 'meta-yellow' : 'meta-red'}">${escapeHtml(task.statusLabel || capitalize(task.status))}</span>
+            </div>
+
+            <div class="divider-soft"></div>
+            <div class="section-label-soft">Adjuntos de la tarea</div>
+            ${renderTaskAttachments(task)}
+
+            <div class="divider-soft"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+              <small style="color:#64748b;">Publicado por: ${escapeHtml(task.ownerName)}</small>
+              ${actionHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function acceptTask(taskId){
+      if(!currentUser){
+        openModal('authModalBackdrop');
+        switchAuthMode('login');
+        return;
+      }
+
+      if(currentUser.mode !== 'z-worker'){
+        alert('Solo los Z-Workers pueden aceptar tareas.');
+        return;
+      }
+
+      const task = taskDatabase.find(t => t.id === taskId);
+      if(!task) return;
+
+      if(task.status !== 'disponible'){
+        alert('Esta tarea ya no está disponible.');
+        return;
+      }
+
+      task.status = 'ocupado';
+      task.statusLabel = 'Ocupada';
+      task.assignedWorkerEmail = currentUser.email;
+      task.assignedWorkerName = currentUser.fullName;
+      task.acceptedAt = new Date().toISOString();
+      task.delivery = null;
+
+      applyCampusTaskFilters();
+      alert('Has aceptado la tarea correctamente.');
+    }
+
+    function editTask(taskId){
+      const task = taskDatabase.find(t => t.id === taskId);
+      if(!task || !currentUser || task.ownerEmail !== currentUser.email) return;
+
+      editingTaskId = task.id;
+      qs('#editTaskIdField').value = task.id;
+      qs('#createTaskForm [name="taskTitle"]').value = task.title;
+      qs('#createTaskForm [name="taskCategory"]').value = task.category;
+      qs('#createTaskForm [name="taskDesc"]').value = task.description;
+      qs('#createTaskForm [name="taskUrgency"]').value = task.urgency;
+      qs('#createTaskForm [name="taskLocation"]').value = task.location;
+      qs('#createTaskForm [name="taskPayment"]').value = task.payment;
+      pendingTaskAttachments = [...(task.attachments || [])];
+      qs('#createTaskSubmitBtn').textContent = 'Guardar Cambios';
+      qs('#taskAttachmentsInput').value = '';
+      renderAttachmentPreview(pendingTaskAttachments, '#taskAttachmentsPreview', true, 'removePendingTaskAttachment');
+      closeModal('campusPanelModalBackdrop');
+      openModal('createTaskModalBackdrop');
+    }
+
+    function deleteTask(taskId){
+      const task = taskDatabase.find(t => t.id === taskId);
+      if(!task || !currentUser || task.ownerEmail !== currentUser.email) return;
+
+      const confirmDelete = confirm('¿Seguro que deseas borrar esta publicación?');
+      if(!confirmDelete) return;
+
+      const index = taskDatabase.findIndex(t => t.id === taskId);
+      if(index >= 0) taskDatabase.splice(index, 1);
+
+      renderMyPostsPanel();
+      alert('La publicación fue eliminada correctamente.');
+    }
+
+    function renderMyPostsPanel(){
+      const content = qs('#campusPanelContent');
+      const myPosts = taskDatabase.filter(task => currentUser && task.ownerEmail === currentUser.email);
+
+      content.innerHTML = `
+        <h2 class="panel-section-title">Mis publicaciones</h2>
+        <p class="panel-section-subtitle">Aquí solo aparecen las publicaciones que tú realizaste.</p>
+        <div id="myPostsResults" class="panel-list"></div>
+      `;
+
+      const box = qs('#myPostsResults');
+
+      if(!myPosts.length){
+        box.innerHTML = `<div class="empty-box">Aún no has realizado publicaciones.</div>`;
+        return;
+      }
+
+      box.innerHTML = myPosts
+        .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .map(task => `
+          <div class="task-item">
+            <div class="task-item-top">
+              <div>
+                <h3 style="margin:0 0 8px; font-size:1.2rem; font-weight:800; color:#1e293b;">${escapeHtml(task.title)}</h3>
+                <p style="margin:0; color:#64748b;">${escapeHtml(task.description)}</p>
+              </div>
+              <div style="min-width:180px; text-align:right;">
+                <div style="font-weight:800; font-size:1.2rem; color:#0f172a;">S/ ${Number(task.payment).toFixed(2)}</div>
+                <div style="font-size:.85rem; color:#64748b;">${formatDate(task.createdAt)}</div>
+              </div>
+            </div>
+
+            <div class="task-meta">
+              <span class="meta-pill meta-blue">${escapeHtml(task.category)}</span>
+              <span class="meta-pill meta-purple">${escapeHtml(task.location)}</span>
+              <span class="meta-pill ${task.status === 'disponible' ? 'meta-green' : task.status === 'entregada' ? 'meta-yellow' : 'meta-red'}">${escapeHtml(task.statusLabel || capitalize(task.status))}</span>
+            </div>
+
+            <div style="display:grid; gap:6px; color:#475569; font-size:.92rem;">
+              <div><strong>Fecha:</strong> ${formatDate(task.createdAt)}</div>
+              <div><strong>Estado:</strong> ${escapeHtml(task.statusLabel || capitalize(task.status))}</div>
+              <div><strong>Z-Worker asignado:</strong> ${task.assignedWorkerName ? escapeHtml(task.assignedWorkerName) : 'Aún nadie aceptó esta tarea'}</div>
+              <div><strong>Urgencia:</strong> ${escapeHtml(task.urgency || 'Normal')}</div>
+            </div>
+
+            <div class="divider-soft"></div>
+            <div class="section-label-soft">Adjuntos de la publicación</div>
+            ${renderTaskAttachments(task)}
+
+            <div class="divider-soft"></div>
+            <div class="section-label-soft">Perfil del Z-Worker</div>
+            ${renderWorkerProfile(task)}
+
+            ${task.delivery ? `
+              <div class="divider-soft"></div>
+              <div class="section-label-soft">Entrega recibida</div>
+              <div class="delivery-box">
+                <div style="display:grid; gap:6px; color:#475569; font-size:.92rem;">
+                  <div><strong>Entregado por:</strong> ${escapeHtml(task.delivery.workerName || '-')}</div>
+                  <div><strong>Fecha de entrega:</strong> ${formatDate(task.delivery.deliveredAt)}</div>
+                  <div><strong>Descripción:</strong> ${task.delivery.description ? escapeHtml(task.delivery.description) : 'Sin descripción.'}</div>
+                </div>
+                <div class="divider-soft"></div>
+                ${renderDeliveryAttachments(task.delivery)}
+              </div>
+            ` : ''}
+
+            <div class="divider-soft"></div>
+            <div class="task-actions">
+              <button class="mini-btn purple" onclick="editTask('${task.id}')">Modificar publicación</button>
+              <button class="mini-btn red" onclick="deleteTask('${task.id}')">Borrar publicación</button>
+            </div>
+          </div>
+        `).join('');
+    }
+
+    function renderMyHelpPanel(){
+      const content = qs('#campusPanelContent');
+      const isWorker = currentUser && currentUser.mode === 'z-worker';
+      const myHelpTasks = taskDatabase.filter(task => currentUser && task.assignedWorkerEmail === currentUser.email);
+
+      let helpBox = '';
+
+      if(!isWorker){
+        helpBox = `<div class="empty-box">No estás registrado como Z-Worker y no has realizado ayuda por el momento.</div>`;
+      } else if(isWorker && !myHelpTasks.length){
+        helpBox = `<div class="empty-box">Sin ayudas por el momento.</div>`;
+      } else {
+        helpBox = myHelpTasks
+          .sort((a,b) => new Date(b.acceptedAt || b.createdAt) - new Date(a.acceptedAt || a.createdAt))
+          .map(task => `
+            <div class="task-item">
+              <div class="task-item-top">
+                <div>
+                  <h3 style="margin:0 0 8px; font-size:1.2rem; font-weight:800; color:#1e293b;">${escapeHtml(task.title)}</h3>
+                  <p style="margin:0; color:#64748b;">${escapeHtml(task.description)}</p>
+                </div>
+                <div style="min-width:180px; text-align:right;">
+                  <div style="font-weight:800; font-size:1.2rem; color:#0f172a;">S/ ${Number(task.payment).toFixed(2)}</div>
+                  <div style="font-size:.85rem; color:#64748b;">Aceptada: ${formatDate(task.acceptedAt || task.createdAt)}</div>
+                </div>
+              </div>
+
+              <div class="task-meta">
+                <span class="meta-pill meta-blue">${escapeHtml(task.category)}</span>
+                <span class="meta-pill meta-purple">${escapeHtml(task.location)}</span>
+                <span class="meta-pill ${task.status === 'ocupado' ? 'meta-red' : task.status === 'entregada' ? 'meta-yellow' : 'meta-green'}">${escapeHtml(task.statusLabel || capitalize(task.status))}</span>
+              </div>
+
+              <div style="display:grid; gap:6px; color:#475569; font-size:.92rem;">
+                <div><strong>Solicitante:</strong> ${escapeHtml(task.ownerName)}</div>
+                <div><strong>Fecha de publicación:</strong> ${formatDate(task.createdAt)}</div>
+                <div><strong>Estado actual:</strong> ${escapeHtml(task.statusLabel || capitalize(task.status))}</div>
+              </div>
+
+              <div class="divider-soft"></div>
+              <div class="section-label-soft">Adjuntos de la tarea</div>
+              ${renderTaskAttachments(task)}
+
+              ${task.status === 'ocupado' ? `
+                <div class="divider-soft"></div>
+                <div class="delivery-box">
+                  <div class="section-label-soft">Entrega de tarea</div>
+                  <div class="info-note">Aquí puedes entregar la tarea con una descripción opcional y subir imagen o archivo como evidencia.</div>
+
+                  <div style="display:grid; gap:14px; margin-top:14px;">
+                    <textarea class="input" id="deliveryDesc_${task.id}" rows="3" placeholder="Descripción de la entrega (opcional)"></textarea>
+
+                    <div class="file-dropzone">
+                      <input class="input delivery-input" type="file" data-task-id="${task.id}" id="deliveryFile_${task.id}" multiple accept="image/*,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.rar,.txt">
+                      <div class="attach-list" id="deliveryAttachmentsPreview"></div>
+                    </div>
+
+                    <div class="task-actions">
+                      <button class="mini-btn green" onclick="deliverTask('${task.id}')">Entregar tarea</button>
+                      <button class="mini-btn red" onclick="cancelTask('${task.id}')">Cancelar tarea</button>
+                    </div>
+                  </div>
+                </div>
+              ` : task.status === 'entregada' ? `
+                <div class="divider-soft"></div>
+                <div class="delivery-box">
+                  <div class="section-label-soft">Tarea entregada</div>
+                  <div style="display:grid; gap:6px; color:#475569; font-size:.92rem;">
+                    <div><strong>Fecha de entrega:</strong> ${formatDate(task.delivery?.deliveredAt)}</div>
+                    <div><strong>Descripción:</strong> ${task.delivery?.description ? escapeHtml(task.delivery.description) : 'Sin descripción.'}</div>
+                  </div>
+                  <div class="divider-soft"></div>
+                  ${renderDeliveryAttachments(task.delivery)}
+                </div>
+              ` : ''}
+            </div>
+          `).join('');
+      }
+
+      content.innerHTML = `
+        <h2 class="panel-section-title">Mi Ayuda Z</h2>
+        <p class="panel-section-subtitle">Consulta tu estado actual y las ayudas realizadas como Z-Worker.</p>
+
+        <div class="task-item" style="margin-bottom:18px;">
+          <h3 style="margin:0 0 10px; font-size:1.2rem; font-weight:800; color:#1e293b;">Mi estado</h3>
+          <div class="task-meta">
+            <span class="meta-pill meta-blue">Modo actual: ${currentUser.mode === 'z-worker' ? 'Z-Worker' : 'Solicitante'}</span>
+            <span class="meta-pill ${currentUser.skills && currentUser.skills.trim() ? 'meta-green' : 'meta-red'}">
+              ${currentUser.skills && currentUser.skills.trim() ? 'Con habilidades registradas' : 'Sin habilidades registradas'}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 14px; font-size:1.15rem; font-weight:800; color:#1e293b;">Ayudas realizadas</h3>
+          <div class="panel-list">${helpBox}</div>
+        </div>
+      `;
+
+      const activeDeliveryInput = qsa('.delivery-input');
+      activeDeliveryInput.forEach(input => {
+        input.addEventListener('change', (e) => {
+          pendingDeliveryAttachments = [...pendingDeliveryAttachments, ...Array.from(e.target.files).map(cloneAttachment)];
+          renderAttachmentPreview(pendingDeliveryAttachments, '#deliveryAttachmentsPreview', true, 'removePendingDeliveryAttachment');
+          e.target.value = '';
+        });
+      });
+
+      renderAttachmentPreview(pendingDeliveryAttachments, '#deliveryAttachmentsPreview', true, 'removePendingDeliveryAttachment');
+    }
+
+    function deliverTask(taskId){
+      const task = taskDatabase.find(t => t.id === taskId);
+      if(!task || !currentUser || task.assignedWorkerEmail !== currentUser.email) return;
+
+      if(task.status !== 'ocupado'){
+        alert('Solo puedes entregar tareas que estén ocupadas.');
+        return;
+      }
+
+      const description = qs(`#deliveryDesc_${taskId}`)?.value?.trim() || '';
+
+      task.status = 'entregada';
+      task.statusLabel = 'Entregada';
+      task.delivery = {
+        workerEmail: currentUser.email,
+        workerName: currentUser.fullName,
+        description,
+        deliveredAt: new Date().toISOString(),
+        attachments: [...pendingDeliveryAttachments]
+      };
+
+      pendingDeliveryAttachments = [];
+      renderMyHelpPanel();
+      alert('La tarea fue entregada correctamente.');
+    }
+
+    function cancelTask(taskId){
+      const task = taskDatabase.find(t => t.id === taskId);
+      if(!task || !currentUser || task.assignedWorkerEmail !== currentUser.email) return;
+
+      if(task.status !== 'ocupado'){
+        alert('Solo puedes cancelar tareas ocupadas.');
+        return;
+      }
+
+      const ok = confirm('¿Seguro que deseas cancelar esta tarea? Volverá a estar disponible para otros Z-Workers.');
+      if(!ok) return;
+
+      task.status = 'disponible';
+      task.statusLabel = 'Disponible';
+      task.assignedWorkerEmail = null;
+      task.assignedWorkerName = null;
+      task.acceptedAt = null;
+      task.delivery = null;
+      pendingDeliveryAttachments = [];
+
+      renderMyHelpPanel();
+      alert('La tarea fue cancelada y volvió a estar disponible.');
+    }
+
+    function capitalize(str = ''){
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      // Registro de Cuenta
+      qs('#registerProfilePhoto').addEventListener('change', e => {
+        const file = e.target.files[0];
+        if(!file) return;
+        pendingRegisterProfilePhoto = cloneSingleImage(file);
+        renderSingleImagePreview(pendingRegisterProfilePhoto, '#registerProfilePhotoPreview', 'removeRegisterProfilePhoto');
+      });
+
+      qs('#workerProfilePhotoInput').addEventListener('change', e => {
+        const file = e.target.files[0];
+        if(!file) return;
+        pendingWorkerProfilePhoto = cloneSingleImage(file);
+        renderSingleImagePreview(pendingWorkerProfilePhoto, '#workerProfilePhotoPreview', 'removeWorkerProfilePhoto');
+      });
+
+      qs('#configProfilePhotoInput').addEventListener('change', e => {
+        const file = e.target.files[0];
+        if(!file) return;
+        pendingConfigProfilePhoto = cloneSingleImage(file);
+        renderSingleImagePreview(pendingConfigProfilePhoto, '#configProfilePhotoPreview', 'removeConfigProfilePhoto');
+      });
+
       qs('#registerForm').addEventListener('submit', (e) => {
         e.preventDefault();
         const fd = new FormData(e.target);
@@ -990,56 +1748,59 @@
         const confirmPass = fd.get('confirmPassword');
         const email = fd.get('email').trim();
 
-        if(!email.endsWith('@ucvvirtual.edu.pe')) {
+        if(!email.endsWith('@ucvvirtual.edu.pe')){
           alert('Error: Solo se permiten correos institucionales con el dominio @ucvvirtual.edu.pe');
           return;
         }
-        if(pass !== confirmPass) {
+        if(pass !== confirmPass){
           alert('Las contraseñas no coinciden.');
           return;
         }
 
-        // CORRECCIÓN: Guardar en base de datos local persistente
         userDatabase[email] = {
           fullName: fd.get('fullName'),
-          email: email,
+          email,
           password: pass,
           phone: fd.get('phone'),
           campus: fd.get('campus'),
           career: fd.get('career'),
           semester: fd.get('semester'),
           skills: activeRegRole === 'z-worker' ? fd.get('skills') : '',
-          mode: 'solicitante'
+          mode: 'solicitante',
+          profilePhoto: pendingRegisterProfilePhoto,
+          workerAvailability: '',
+          workerTypes: '',
+          workerPayment: '',
+          workerDescription: ''
         };
 
+        pendingRegisterProfilePhoto = null;
+        renderSingleImagePreview(null, '#registerProfilePhotoPreview');
+        qs('#registerProfilePhoto').value = '';
         alert('¡Registro exitoso! Por favor, inicia sesión con tu cuenta.');
-        // CORRECCIÓN: Envía directo a la vista de login
         switchAuthMode('login');
         qs('#loginEmail').value = email;
         e.target.reset();
       });
 
-      // Inicio de Sesión Persistente
       qs('#loginForm').addEventListener('submit', (e) => {
         e.preventDefault();
         const email = qs('#loginEmail').value.trim();
         const pass = qs('#loginPassword').value;
 
-        if(!email.endsWith('@ucvvirtual.edu.pe')) {
+        if(!email.endsWith('@ucvvirtual.edu.pe')){
           alert('Por favor, ingresa un correo con terminación @ucvvirtual.edu.pe');
           return;
         }
-        
-        // CORRECCIÓN: Comprobación contra cuentas guardadas
-        if(userDatabase[email]) {
-          if(userDatabase[email].password === pass) {
+
+        if(userDatabase[email]){
+          if(userDatabase[email].password === pass){
             currentUser = userDatabase[email];
-          } else {
+          }else{
             alert('Contraseña incorrecta.');
             return;
           }
-        } else {
-          // CORRECCIÓN: Si no existe, mostrar error (imágenes de referencia)
+        }else{
           alert('Error: No se encontró una cuenta con este correo institucional. Regístrate primero.');
           switchAuthMode('register');
           qs('#registerForm input[name="email"]').value = email;
@@ -1052,7 +1813,6 @@
         e.target.reset();
       });
 
-      // Guardar Configuración / Edición Perfil
       qs('#profileEditForm').addEventListener('submit', (e) => {
         e.preventDefault();
         if(!currentUser) return;
@@ -1062,8 +1822,10 @@
         currentUser.career = qs('#efCareer').value;
         currentUser.semester = qs('#efSemester').value;
         currentUser.skills = qs('#efSkills').value;
+        if(pendingConfigProfilePhoto){
+          currentUser.profilePhoto = pendingConfigProfilePhoto;
+        }
 
-        // Actualizar base de datos
         userDatabase[currentUser.email] = currentUser;
 
         alert('¡Configuración actualizada correctamente!');
@@ -1072,17 +1834,84 @@
         renderHeaderActions();
       });
 
+      qs('#taskAttachmentsInput').addEventListener('change', (e) => {
+        const newFiles = Array.from(e.target.files).map(cloneAttachment);
+        pendingTaskAttachments = [...pendingTaskAttachments, ...newFiles];
+        renderAttachmentPreview(pendingTaskAttachments, '#taskAttachmentsPreview', true, 'removePendingTaskAttachment');
+        e.target.value = '';
+      });
+
       qs('#createTaskForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('¡Tu tarea ha sido publicada exitosamente en el campus!');
+
+        if(!currentUser){
+          closeModal('createTaskModalBackdrop');
+          openModal('authModalBackdrop');
+          switchAuthMode('login');
+          return;
+        }
+
+        const fd = new FormData(e.target);
+
+        if(editingTaskId){
+          const task = taskDatabase.find(t => t.id === editingTaskId);
+          if(!task || task.ownerEmail !== currentUser.email){
+            alert('No se pudo modificar la publicación.');
+            return;
+          }
+
+          task.title = fd.get('taskTitle');
+          task.category = fd.get('taskCategory');
+          task.description = fd.get('taskDesc');
+          task.urgency = fd.get('taskUrgency');
+          task.location = fd.get('taskLocation');
+          task.payment = Number(fd.get('taskPayment'));
+          task.attachments = [...pendingTaskAttachments];
+
+          alert('La publicación fue modificada correctamente.');
+        } else {
+          const newTask = {
+            id: 'task_' + Date.now(),
+            ownerEmail: currentUser.email,
+            ownerName: currentUser.fullName,
+            title: fd.get('taskTitle'),
+            category: fd.get('taskCategory'),
+            description: fd.get('taskDesc'),
+            urgency: fd.get('taskUrgency'),
+            location: fd.get('taskLocation'),
+            payment: Number(fd.get('taskPayment')),
+            status: 'disponible',
+            statusLabel: 'Disponible',
+            createdAt: new Date().toISOString(),
+            assignedWorkerEmail: null,
+            assignedWorkerName: null,
+            acceptedAt: null,
+            delivery: null,
+            attachments: [...pendingTaskAttachments]
+          };
+
+          taskDatabase.unshift(newTask);
+          alert('¡Tu tarea ha sido publicada exitosamente en el campus!');
+        }
+
         closeModal('createTaskModalBackdrop');
-        e.target.reset();
+        resetTaskForm();
       });
 
       qs('#ofrecerServiciosForm').addEventListener('submit', (e) => {
         e.preventDefault();
         if(!currentUser) return;
+
         currentUser.skills = qs('#ofrecerServiciosForm textarea[name="osSkills"]').value;
+        currentUser.workerAvailability = qs('#ofrecerServiciosForm input[name="osAvailability"]').value;
+        currentUser.workerTypes = qs('#ofrecerServiciosForm input[name="osTypes"]').value;
+        currentUser.workerPayment = qs('#ofrecerServiciosForm input[name="osPayment"]').value;
+        currentUser.workerDescription = qs('#ofrecerServiciosForm textarea[name="osDesc"]').value;
+
+        if(pendingWorkerProfilePhoto){
+          currentUser.profilePhoto = pendingWorkerProfilePhoto;
+        }
+
         userDatabase[currentUser.email] = currentUser;
         alert('¡Tus servicios de Z-Worker han sido actualizados!');
         closeModal('ofrecerServiciosModalBackdrop');
@@ -1092,11 +1921,11 @@
 
       document.addEventListener('click', (e) => {
         const drop = qs('#headerUserDropdown');
-        if(drop && !drop.contains(e.target) && !qs('#userChipBtn')?.contains(e.target)) {
+        if(drop && !drop.contains(e.target) && !qs('#userChipBtn')?.contains(e.target)){
           drop.classList.remove('show');
         }
         qsa('.modal-backdrop').forEach(backdrop => {
-          if(e.target === backdrop) {
+          if(e.target === backdrop){
             closeModal(backdrop.id);
           }
         });
@@ -1111,25 +1940,25 @@
     });
 
     function renderFaq(){
-      qs('#faqList').innerHTML = faqs.map(([q,a])=>`
+      qs('#faqList').innerHTML = faqs.map(([q,a]) => `
         <div class="faq-item">
           <div class="faq-q">${q}<span>+</span></div>
           <div class="faq-wrapper"><div class="faq-a">${a}</div></div>
         </div>
       `).join('');
-      
+
       qsa('.faq-q').forEach(el => {
         el.addEventListener('click', () => {
           const item = el.parentElement;
           const isOpen = item.classList.contains('open');
-          qsa('.faq-item').forEach(i => i.classList.remove('open')); 
+          qsa('.faq-item').forEach(i => i.classList.remove('open'));
           if(!isOpen) item.classList.add('open');
         });
       });
     }
 
     function renderCards(list, targetId){
-      if (targetId === '#stepsGrid') {
+      if(targetId === '#stepsGrid'){
         qs(targetId).innerHTML = list.map(([title, desc, icon], i) => `
           <div class="card">
             <div class="step-num">${i + 1}</div>
@@ -1138,7 +1967,7 @@
             <p>${desc}</p>
           </div>
         `).join('');
-      } else if (targetId === '#servicesGrid' || targetId === '#benefitsGrid') {
+      } else if(targetId === '#servicesGrid' || targetId === '#benefitsGrid'){
         qs(targetId).innerHTML = list.map(([title, desc, badge]) => `
           <div class="card">
             ${badge}
@@ -1151,11 +1980,11 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
+        if(entry.isIntersecting) entry.target.classList.add('show');
       });
     }, { threshold: 0.1 });
-    setTimeout(() => qsa('.reveal').forEach(el => observer.observe(el)), 100);
 
+    setTimeout(() => qsa('.reveal').forEach(el => observer.observe(el)), 100);
     qs('#year').textContent = new Date().getFullYear();
   </script>
 </body>
