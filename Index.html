@@ -448,13 +448,15 @@
           </ul>
         </div>
         <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Términos y Condiciones</a></li>
-            <li><a href="#">Política de Privacidad</a></li>
-            <li><a href="#">Aviso Legal</a></li>
-          </ul>
-        </div>
+  <h4>Legal</h4>
+  <ul>
+    <li><a href="javascript:void(0)" onclick="openModal('termsModalBackdrop')">Términos y Condiciones</a></li>
+    <li><a href="javascript:void(0)" onclick="openModal('privacyModalBackdrop')">Política de Privacidad</a></li>
+    <li><a href="javascript:void(0)" onclick="openModal('legalNoticeModalBackdrop')">Aviso Legal</a></li>
+  </ul>
+</div>
+
+
         <div>
           <h4>Contacto</h4>
           <p style="color:#fff; font-weight:600; margin:0 0 16px;">info@ztech.com</p>
@@ -515,10 +517,17 @@
           </div>
 
           <div class="form-full">
-            <label style="display:flex; align-items:center; gap:8px; font-weight:500;">
-              <input type="checkbox" required style="width:16px; height:16px;"> Acepto los <a href="#" style="color:var(--blue); text-decoration:underline;">términos y condiciones</a> *
-            </label>
-          </div>
+  <label style="display:flex; align-items:center; gap:8px; font-weight:500; flex-wrap:wrap; line-height:1.5;">
+    <input type="checkbox" required style="width:16px; height:16px;">
+    <span>
+      Acepto los
+      <a href="javascript:void(0)" onclick="openModal('termsModalBackdrop')" style="color:var(--blue); text-decoration:underline; font-weight:700;">
+        términos y condiciones
+      </a>
+      *
+    </span>
+  </label>
+</div>
           <div class="form-full" style="text-align:center; margin-top:14px;">
             <button class="btn btn-primary" type="submit" style="padding:14px 40px; background:#4f46e5;">Completar Registro</button>
           </div>
@@ -1986,6 +1995,254 @@
 
     setTimeout(() => qsa('.reveal').forEach(el => observer.observe(el)), 100);
     qs('#year').textContent = new Date().getFullYear();
+
+    
   </script>
+<div class="modal-backdrop" id="privacyModalBackdrop">
+  <div class="modal" style="width:min(900px,100%);">
+    <button class="close" onclick="closeModal('privacyModalBackdrop')">×</button>
+
+    <h2 style="margin-top:0; font-size:1.8rem; font-weight:800; color:#4f46e5;">
+      Política de Privacidad
+    </h2>
+
+    <div style="display:grid; gap:14px; color:#475569; line-height:1.7;">
+      <p><strong>Última actualización:</strong> 25 de junio de 2026</p>
+
+      <p>
+        En Z-Tech respetamos la privacidad de nuestros usuarios y tratamos sus datos personales conforme
+        a la normativa peruana aplicable, incluyendo la Ley N.° 29733, Ley de Protección de Datos Personales,
+        y sus disposiciones complementarias.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">1. Datos que recopilamos</h3>
+      <p>
+        Podemos recopilar datos como nombre completo, correo institucional, teléfono, universidad, campus,
+        carrera, ciclo, foto de perfil, habilidades, archivos adjuntos, imágenes subidas a tareas y otra
+        información que el usuario proporcione al registrarse o al usar la plataforma.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">2. Finalidad del tratamiento</h3>
+      <p>
+        Utilizamos estos datos para crear y administrar cuentas, verificar usuarios, permitir publicaciones
+        de tareas, mostrar perfiles, facilitar la interacción entre solicitantes y Z-Workers, mejorar la seguridad,
+        brindar soporte y optimizar el funcionamiento de la plataforma.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">3. Datos visibles dentro de la plataforma</h3>
+      <p>
+        Algunos datos podrán ser visibles para otros usuarios cuando resulte necesario para el funcionamiento
+        del servicio, como nombre, foto de perfil, habilidades, descripción, campus, carrera o datos relacionados
+        con una tarea aceptada o entregada.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">4. Conservación de la información</h3>
+      <p>
+        Los datos serán conservados durante el tiempo necesario para cumplir con las finalidades del servicio,
+        atender incidencias, resolver disputas, cumplir obligaciones legales o mientras la cuenta permanezca activa.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">5. Seguridad</h3>
+      <p>
+        Z-Tech adopta medidas razonables de seguridad para proteger la información personal frente a accesos no
+        autorizados, pérdida, alteración o uso indebido. Sin embargo, ningún sistema es completamente infalible.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">6. Derechos del titular</h3>
+      <p>
+        El usuario podrá solicitar información sobre sus datos personales, así como ejercer los derechos que la ley
+        le reconozca, como acceso, actualización, rectificación o cancelación, conforme a la normativa aplicable.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">7. Archivos, imágenes y contenido</h3>
+      <p>
+        Los archivos e imágenes que el usuario cargue podrán ser almacenados y mostrados dentro de la plataforma
+        cuando ello sea necesario para la ejecución de tareas, validación de entregas o visualización de perfiles.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">8. Cambios en esta política</h3>
+      <p>
+        Z-Tech podrá actualizar esta Política de Privacidad cuando sea necesario. Los cambios entrarán en vigencia
+        desde su publicación en la plataforma.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">9. Contacto</h3>
+      <p>
+        Para consultas relacionadas con privacidad o protección de datos personales, el usuario podrá comunicarse
+        a través de los canales oficiales de atención de Z-Tech.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="legalNoticeModalBackdrop">
+  <div class="modal" style="width:min(900px,100%);">
+    <button class="close" onclick="closeModal('legalNoticeModalBackdrop')">×</button>
+
+    <h2 style="margin-top:0; font-size:1.8rem; font-weight:800; color:#4f46e5;">
+      Aviso Legal
+    </h2>
+
+    <div style="display:grid; gap:14px; color:#475569; line-height:1.7;">
+      <p><strong>Última actualización:</strong> 25 de junio de 2026</p>
+
+      <h3 style="margin:0; color:#1e293b;">1. Titularidad del sitio</h3>
+      <p>
+        Z-Tech es una plataforma digital cuyo titular, responsable o administrador deberá identificarse
+        expresamente en esta sección con su nombre o razón social, correo de contacto y demás datos legales aplicables.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">2. Finalidad del sitio web</h3>
+      <p>
+        Este sitio tiene como finalidad facilitar la conexión entre usuarios que publican tareas y usuarios
+        que ofrecen apoyo o servicios dentro del entorno universitario.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">3. Uso del contenido</h3>
+      <p>
+        El diseño, estructura, logotipos, textos, interfaces y demás elementos visibles de Z-Tech forman parte
+        de la plataforma y no podrán ser reproducidos, distribuidos o utilizados sin autorización previa,
+        salvo que la ley permita lo contrario.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">4. Responsabilidad sobre enlaces y contenidos</h3>
+      <p>
+        Z-Tech podrá mostrar contenido cargado por usuarios, incluyendo perfiles, imágenes, descripciones y archivos.
+        Cada usuario es responsable del contenido que publica y de las consecuencias derivadas de su uso.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">5. Limitación de responsabilidad</h3>
+      <p>
+        Z-Tech no garantiza la disponibilidad continua del sitio ni se responsabiliza por interrupciones,
+        errores técnicos, pérdida de información o daños derivados del uso indebido de la plataforma por terceros.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">6. Normativa aplicable</h3>
+      <p>
+        El uso de esta plataforma se rige por las leyes de la República del Perú, incluyendo las normas
+        vinculadas a protección de datos personales, consumo y servicios digitales.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">7. Libro de Reclamaciones</h3>
+      <p>
+        Cuando corresponda por la naturaleza del servicio y conforme a la normativa aplicable, la plataforma
+        deberá exhibir de forma visible y accesible el enlace al Libro de Reclamaciones.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">8. Contacto</h3>
+      <p>
+        Para comunicaciones legales, consultas o requerimientos, el usuario podrá utilizar los canales de contacto
+        oficiales informados por Z-Tech.
+      </p>
+    </div>
+  </div>
+</div>
+
+  <div class="modal-backdrop" id="termsModalBackdrop">
+  <div class="modal" style="width:min(900px,100%);">
+    <button class="close" onclick="closeModal('termsModalBackdrop')">×</button>
+
+    <h2 style="margin-top:0; font-size:1.8rem; font-weight:800; color:#4f46e5;">
+      Términos y Condiciones de Uso
+    </h2>
+
+    <div style="display:grid; gap:14px; color:#475569; line-height:1.7;">
+      <p><strong>Última actualización:</strong> 25 de junio de 2026</p>
+
+      <p>
+        Z-Tech es una plataforma digital orientada a conectar estudiantes universitarios para publicar,
+        encontrar y gestionar microtareas, apoyos académicos, encargos y servicios dentro del entorno del campus.
+      </p>
+
+      <p>
+        Al registrarte, acceder o utilizar Z-Tech, aceptas estos Términos y Condiciones, así como las políticas
+        complementarias que resulten aplicables dentro de la plataforma.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">1. Registro y cuenta</h3>
+      <p>
+        El usuario se compromete a proporcionar información verdadera, completa y actualizada durante su registro.
+        Cada cuenta es personal e intransferible, y el usuario es responsable de toda actividad realizada desde ella.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">2. Uso de la plataforma</h3>
+      <p>
+        Z-Tech permite que los usuarios publiquen tareas, soliciten apoyo o ofrezcan servicios dentro de la comunidad
+        universitaria. El uso de la plataforma debe realizarse de buena fe, respetando la ley, las normas universitarias
+        y los derechos de terceros.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">3. Roles de usuario</h3>
+      <p>
+        Los usuarios pueden participar como solicitantes o como Z-Workers, según las funcionalidades habilitadas en
+        su cuenta. Solo los usuarios con modo Z-Worker activo podrán aceptar y ejecutar tareas publicadas dentro de la plataforma.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">4. Publicación de tareas</h3>
+      <p>
+        El usuario que publica una tarea es responsable de que la información ingresada sea clara, exacta y lícita.
+        Está prohibido publicar tareas fraudulentas, engañosas, ofensivas, ilícitas o contrarias a las normas académicas
+        o institucionales.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">5. Perfil y contenido visible</h3>
+      <p>
+        Al utilizar la plataforma, el usuario acepta que ciertos datos de su perfil, como nombre, foto de perfil,
+        habilidades, campus, carrera o descripción, puedan mostrarse a otros usuarios cuando sea necesario para
+        facilitar la conexión, la confianza y la ejecución de tareas.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">6. Archivos e imágenes</h3>
+      <p>
+        El usuario es responsable de los archivos, imágenes, textos o materiales que suba a la plataforma. Queda prohibido
+        cargar contenido ilegal, ofensivo, engañoso, que infrinja derechos de autor o que afecte la seguridad de otros usuarios.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">7. Responsabilidad de los usuarios</h3>
+      <p>
+        Cada usuario asume responsabilidad por sus publicaciones, interacciones, entregas, cancelaciones y acuerdos
+        realizados mediante la plataforma. Z-Tech funciona como plataforma de intermediación y no garantiza por sí misma
+        el resultado final de las tareas gestionadas entre usuarios.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">8. Conductas prohibidas</h3>
+      <p>
+        Está prohibido suplantar identidad, usar información falsa, acosar a otros usuarios, publicar contenido ilícito,
+        realizar fraudes, afectar el funcionamiento técnico de la plataforma o utilizar Z-Tech para fines distintos a los
+        permitidos por su naturaleza.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">9. Suspensión o cierre de cuenta</h3>
+      <p>
+        Z-Tech podrá suspender, limitar o eliminar cuentas que incumplan estos términos, afecten la seguridad de la comunidad
+        o generen un uso abusivo, riesgoso o fraudulento del servicio.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">10. Protección de datos personales</h3>
+      <p>
+        Los datos personales tratados a través de la plataforma deberán gestionarse conforme a la normativa peruana aplicable,
+        incluyendo la Ley N.° 29733, Ley de Protección de Datos Personales, y sus disposiciones complementarias.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">11. Disponibilidad del servicio</h3>
+      <p>
+        Z-Tech procurará mantener la plataforma operativa y segura; sin embargo, no garantiza disponibilidad permanente,
+        ausencia de errores o funcionamiento ininterrumpido.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">12. Modificaciones</h3>
+      <p>
+        Z-Tech podrá actualizar o modificar estos Términos y Condiciones en cualquier momento. Las modificaciones entrarán
+        en vigencia desde su publicación dentro de la plataforma o desde el momento en que se informe al usuario.
+      </p>
+
+      <h3 style="margin:10px 0 0; color:#1e293b;">13. Contacto</h3>
+      <p>
+        Para dudas, observaciones o solicitudes relacionadas con el uso de la plataforma, el usuario podrá comunicarse a través
+        de los canales de contacto oficiales que Z-Tech habilite.
+      </p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
